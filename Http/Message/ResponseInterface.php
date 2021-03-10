@@ -17,6 +17,9 @@ namespace Psr\Http\Message;
  * be implemented such that they retain the internal state of the current
  * message and return an instance that contains the changed state.
  */
+
+require_once 'Psr/Http/Message/MessageInterface.php';
+
 interface ResponseInterface extends MessageInterface
 {
     /**
