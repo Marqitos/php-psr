@@ -3,5 +3,5 @@ v1.0.1
 commit f6561bf28d520154e4b0ec72be95418abe6d9363
 
 repository https://github.com/php-fig/http-message-util.git
-v1.1.2
-commit 20b2c280cb6914b7b83089720df44e490f4b42f0
+v1.1.5
+commit 9d94dc0154230ac39e5bf89398b324a86f63f765
