@@ -9,3 +9,7 @@ commit 9d94dc0154230ac39e5bf89398b324a86f63f765
 repository https://github.com/php-fig/http-client.git
 v1.0.1
 commit 2dfb5f6c5eff0e91e20e913f8c5452ed95b86621
+
+repository https://github.com/php-fig/log.git
+v1.1.4
+commit d49695b909c3b7628b6289db5479a1c204601f11
