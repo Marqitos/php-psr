@@ -2,6 +2,10 @@
 
 namespace Psr\Log;
 
+use Psr\Log\LogLevel;
+
+require_once 'Psr/Log/LogLevel.php';
+
 /**
  * This is a simple Logger trait that classes unable to extend AbstractLogger
  * (because they extend another class, etc) can include.
@@ -10,8 +14,8 @@ namespace Psr\Log;
  * reduce boilerplate code that a simple Logger that does the same thing with
  * messages regardless of the error level has to implement.
  */
-trait LoggerTrait
-{
+
+trait LoggerTrait {
     /**
      * System is unusable.
      *
@@ -20,8 +24,7 @@ trait LoggerTrait
      *
      * @return void
      */
-    public function emergency($message, array $context = array())
-    {
+    public function emergency($message, array $context = array()) {
         $this->log(LogLevel::EMERGENCY, $message, $context);
     }
 

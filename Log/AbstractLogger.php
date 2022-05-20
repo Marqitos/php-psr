@@ -2,6 +2,12 @@
 
 namespace Psr\Log;
 
+use Psr\Log\LoggerInterface;
+use Psr\Log\LogLevel;
+
+require_once 'Psr/Log/LoggerInterface.php';
+require_once 'Psr/Log/LogLevel.php';
+
 /**
  * This is a simple Logger implementation that other Loggers can inherit from.
  *

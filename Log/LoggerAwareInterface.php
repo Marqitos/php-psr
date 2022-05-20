@@ -2,6 +2,10 @@
 
 namespace Psr\Log;
 
+use Psr\Log\LoggerInterface;
+
+require_once 'Psr/Log/LoggerInterface.php';
+
 /**
  * Describes a logger-aware instance.
  */

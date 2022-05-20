@@ -2,11 +2,14 @@
 
 namespace Psr\Log;
 
+use Psr\Log\LoggerInterface;
+
+require_once 'Psr/Log/LoggerInterface.php';
+
 /**
  * Basic Implementation of LoggerAwareInterface.
  */
-trait LoggerAwareTrait
-{
+trait LoggerAwareTrait {
     /**
      * The logger instance.
      *
