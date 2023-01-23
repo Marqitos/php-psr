@@ -141,5 +141,5 @@ trait LoggerTrait {
      *
      * @throws \Psr\Log\InvalidArgumentException
      */
-    abstract public function log($level, $message, array $context = array());
+    abstract public function log(string $level, $message, array $context = array());
 }
