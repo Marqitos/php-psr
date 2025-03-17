@@ -9,40 +9,37 @@ require_once 'Psr/Log/LoggerInterface.php';
 require_once 'Psr/Log/LogLevel.php';
 
 /**
- * This is a simple Logger implementation that other Loggers can inherit from.
- *
- * It simply delegates all log-level-specific methods to the `log` method to
- * reduce boilerplate code that a simple Logger that does the same thing with
- * messages regardless of the error level has to implement.
- */
-abstract class AbstractLogger implements LoggerInterface
-{
+  * This is a simple Logger implementation that other Loggers can inherit from.
+  *
+  * It simply delegates all log-level-specific methods to the `log` method to
+  * reduce boilerplate code that a simple Logger that does the same thing with
+  * messages regardless of the error level has to implement.
+  */
+abstract class AbstractLogger implements LoggerInterface {
     /**
-     * System is unusable.
-     *
-     * @param string  $message
-     * @param mixed[] $context
-     *
-     * @return void
-     */
-    public function emergency($message, array $context = array())
-    {
+      * System is unusable.
+      *
+      * @param string  $message
+      * @param mixed[] $context
+      *
+      * @return void
+      */
+    public function emergency($message, array $context = []) {
         $this->log(LogLevel::EMERGENCY, $message, $context);
     }
 
     /**
-     * Action must be taken immediately.
-     *
-     * Example: Entire website down, database unavailable, etc. This should
-     * trigger the SMS alerts and wake you up.
-     *
-     * @param string  $message
-     * @param mixed[] $context
-     *
-     * @return void
-     */
-    public function alert($message, array $context = array())
-    {
+      * Action must be taken immediately.
+      *
+      * Example: Entire website down, database unavailable, etc. This should
+      * trigger the SMS alerts and wake you up.
+      *
+      * @param string  $message
+      * @param mixed[] $context
+      *
+      * @return void
+      */
+    public function alert($message, array $context = []) {
         $this->log(LogLevel::ALERT, $message, $context);
     }
 
@@ -56,8 +53,7 @@ abstract class AbstractLogger implements LoggerInterface
      *
      * @return void
      */
-    public function critical($message, array $context = array())
-    {
+    public function critical($message, array $context = []) {
         $this->log(LogLevel::CRITICAL, $message, $context);
     }
 
@@ -70,8 +66,7 @@ abstract class AbstractLogger implements LoggerInterface
      *
      * @return void
      */
-    public function error($message, array $context = array())
-    {
+    public function error($message, array $context = []) {
         $this->log(LogLevel::ERROR, $message, $context);
     }
 
@@ -86,8 +81,7 @@ abstract class AbstractLogger implements LoggerInterface
      *
      * @return void
      */
-    public function warning($message, array $context = array())
-    {
+    public function warning($message, array $context = []) {
         $this->log(LogLevel::WARNING, $message, $context);
     }
 
@@ -99,8 +93,7 @@ abstract class AbstractLogger implements LoggerInterface
      *
      * @return void
      */
-    public function notice($message, array $context = array())
-    {
+    public function notice($message, array $context = []) {
         $this->log(LogLevel::NOTICE, $message, $context);
     }
 
@@ -114,8 +107,7 @@ abstract class AbstractLogger implements LoggerInterface
      *
      * @return void
      */
-    public function info($message, array $context = array())
-    {
+    public function info($message, array $context = []) {
         $this->log(LogLevel::INFO, $message, $context);
     }
 
@@ -127,8 +119,7 @@ abstract class AbstractLogger implements LoggerInterface
      *
      * @return void
      */
-    public function debug($message, array $context = array())
-    {
+    public function debug($message, array $context = []) {
         $this->log(LogLevel::DEBUG, $message, $context);
     }
 }

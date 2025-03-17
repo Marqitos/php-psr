@@ -24,8 +24,7 @@ namespace Psr\Http\Message;
 
 require_once 'Psr/Http/Message/MessageInterface.php';
 
-interface RequestInterface extends MessageInterface
-{
+interface RequestInterface extends MessageInterface {
     /**
      * Retrieves the message's request target.
      *

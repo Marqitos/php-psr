@@ -3,20 +3,20 @@
 namespace Psr\Log;
 
 /**
- * Describes a logger instance.
- *
- * The message MUST be a string or object implementing __toString().
- *
- * The message MAY contain placeholders in the form: {foo} where foo
- * will be replaced by the context data in key "foo".
- *
- * The context array can contain arbitrary data. The only assumption that
- * can be made by implementors is that if an Exception instance is given
- * to produce a stack trace, it MUST be in a key named "exception".
- *
- * See https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md
- * for the full interface specification.
- */
+  * Describes a logger instance.
+  *
+  * The message MUST be a string or object implementing __toString().
+  *
+  * The message MAY contain placeholders in the form: {foo} where foo
+  * will be replaced by the context data in key "foo".
+  *
+  * The context array can contain arbitrary data. The only assumption that
+  * can be made by implementors is that if an Exception instance is given
+  * to produce a stack trace, it MUST be in a key named "exception".
+  *
+  * See https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md
+  * for the full interface specification.
+  */
 interface LoggerInterface {
     /**
      * System is unusable.
@@ -26,7 +26,7 @@ interface LoggerInterface {
      *
      * @return void
      */
-    public function emergency($message, array $context = array());
+    public function emergency($message, array $context = []);
 
     /**
      * Action must be taken immediately.
@@ -39,7 +39,7 @@ interface LoggerInterface {
      *
      * @return void
      */
-    public function alert($message, array $context = array());
+    public function alert($message, array $context = []);
 
     /**
      * Critical conditions.
@@ -51,7 +51,7 @@ interface LoggerInterface {
      *
      * @return void
      */
-    public function critical($message, array $context = array());
+    public function critical($message, array $context = []);
 
     /**
      * Runtime errors that do not require immediate action but should typically
@@ -62,7 +62,7 @@ interface LoggerInterface {
      *
      * @return void
      */
-    public function error($message, array $context = array());
+    public function error($message, array $context = []);
 
     /**
      * Exceptional occurrences that are not errors.
@@ -75,7 +75,7 @@ interface LoggerInterface {
      *
      * @return void
      */
-    public function warning($message, array $context = array());
+    public function warning($message, array $context = []);
 
     /**
      * Normal but significant events.
@@ -85,7 +85,7 @@ interface LoggerInterface {
      *
      * @return void
      */
-    public function notice($message, array $context = array());
+    public function notice($message, array $context = []);
 
     /**
      * Interesting events.
@@ -97,7 +97,7 @@ interface LoggerInterface {
      *
      * @return void
      */
-    public function info($message, array $context = array());
+    public function info($message, array $context = []);
 
     /**
      * Detailed debug information.
@@ -107,7 +107,7 @@ interface LoggerInterface {
      *
      * @return void
      */
-    public function debug($message, array $context = array());
+    public function debug($message, array $context = []);
 
     /**
      * Logs with an arbitrary level.
@@ -120,5 +120,5 @@ interface LoggerInterface {
      *
      * @throws \Psr\Log\InvalidArgumentException
      */
-    public function log(string $level, $message, array $context = array());
+    public function log(string $level, $message, array $context = []);
 }

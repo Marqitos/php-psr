@@ -20,8 +20,7 @@ namespace Psr\Http\Message;
 
 require_once 'Psr/Http/Message/MessageInterface.php';
 
-interface ResponseInterface extends MessageInterface
-{
+interface ResponseInterface extends MessageInterface {
     /**
      * Gets the response status code.
      *

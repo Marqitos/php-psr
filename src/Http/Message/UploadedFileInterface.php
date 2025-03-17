@@ -10,8 +10,7 @@ namespace Psr\Http\Message;
  * state of the current instance and return an instance that contains the
  * changed state.
  */
-interface UploadedFileInterface
-{
+interface UploadedFileInterface {
     /**
      * Retrieve a stream representing the uploaded file.
      *

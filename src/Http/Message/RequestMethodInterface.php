@@ -19,8 +19,7 @@ namespace Psr\Http\Message;
  * }
  * </code>
  */
-interface RequestMethodInterface
-{
+interface RequestMethodInterface {
     const METHOD_HEAD    = 'HEAD';
     const METHOD_GET     = 'GET';
     const METHOD_POST    = 'POST';

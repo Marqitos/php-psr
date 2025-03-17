@@ -3,10 +3,9 @@
 namespace Psr\Log;
 
 /**
- * Describes log levels.
- */
-class LogLevel
-{
+  * Describes log levels.
+  */
+class LogLevel {
     const EMERGENCY = 'emergency';
     const ALERT     = 'alert';
     const CRITICAL  = 'critical';

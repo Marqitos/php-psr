@@ -34,8 +34,7 @@ namespace Psr\Http\Message;
  * }
  * </code>
  */
-interface StatusCodeInterface
-{
+interface StatusCodeInterface {
     // Informational 1xx
     const STATUS_CONTINUE = 100;
     const STATUS_SWITCHING_PROTOCOLS = 101;

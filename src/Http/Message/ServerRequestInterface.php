@@ -43,8 +43,7 @@ namespace Psr\Http\Message;
 
 require_once 'Psr/Http/Message/RequestInterface.php';
 
-interface ServerRequestInterface extends RequestInterface
-{
+interface ServerRequestInterface extends RequestInterface {
     /**
      * Retrieve server parameters.
      *
