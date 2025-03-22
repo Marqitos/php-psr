@@ -37,6 +37,10 @@ HTTP messages are the foundation of web development. Web browsers and HTTP clien
 
 HTTP messages are typically abstracted from the end-user consumer, but as developers, we typically need to know how they are structured and how to access or manipulate them in order to perform our tasks, whether that might be making a request to an HTTP API, or handling an incoming request.
 
+- [Interfaces](docs/PSR7-Interfaces.md)
+- [Usage](docs/PSR7-Usage.md)
+- [ChangeLog](psr_http-message_CHANGELOG.md)
+
 ### References
 
 - [RFC 2119](http://tools.ietf.org/html/rfc2119)
@@ -120,4 +124,4 @@ This should be done by using the `getTimestamp()` method on the returned `\DateT
 
 ---
 
-[1]**[Implementation versions](VERSIONS.md)**
+[^1]:**[Implementation versions](VERSIONS.md)**
