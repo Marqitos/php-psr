@@ -6,6 +6,24 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - [psr/http-message](psr_http-message_CHANGELOG.md)
 
+## 2.0.0 - 2023-04-04 - psr/http-message
+
+### Changed
+
+- Declared return type for all methods.
+
+### Added
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
 ## 1.0.1 - 2016-08-06 - psr/http-message
 
 ### Added
