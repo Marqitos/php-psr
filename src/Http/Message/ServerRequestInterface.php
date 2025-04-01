@@ -2,6 +2,10 @@
 
 namespace Psr\Http\Message;
 
+use Psr\Http\Message\RequestInterface;
+
+require_once 'RequestInterface.php';
+
 /**
  * Representation of an incoming, server-side HTTP request.
  *
