@@ -103,7 +103,7 @@ $response->getBody()->write('hello');
 The following snippet gets the contents of a stream contents.
 > Note: Streams must be rewinded, if content was written into streams, it will be ignored when calling `getContents()` because the stream pointer is set to the last character, which is `\0` - meaning end of stream.
 
-```php 
+```php
 $body = $response->getBody();
 $body->rewind(); // or $body->seek(0);
 $bodyText = $body->getContents();
