@@ -4,7 +4,7 @@ The PSRs (PHP Standards Recommendations) are standards recommendations for PHP. 
 
 Classes, Interfaces and Traits, work of [PHP Standards Recommendations](https://www.php-fig.org/psr), part of [The PHP framework interop group](https://www.php-fig.org)
 
-# PSR Implementations[^1]
+## PSR Implementations[^1]
 
 These recommendations cover a wide variety of practices and conventions, from coding style to project structuring. TThis repository includes several **`class`es**, **`interface`s**, and **`trait`s**; to cover the following standards:
 
