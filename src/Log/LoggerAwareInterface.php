@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Psr\Log;
 
@@ -12,10 +12,6 @@ require_once 'Psr/Log/LoggerInterface.php';
 interface LoggerAwareInterface {
     /**
       * Sets a logger instance on the object.
-      *
-      * @param LoggerInterface $logger
-      *
-      * @return void
       */
-    public function setLogger(LoggerInterface $logger);
+    public function setLogger(LoggerInterface $logger): void;
 }

@@ -1,8 +1,8 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Psr\Log;
 
-use Psr\Log\LogLevel;
+use Psr\LogLevel;
 
 require_once 'Psr/Log/LogLevel.php';
 
@@ -15,124 +15,79 @@ require_once 'Psr/Log/LogLevel.php';
   * messages regardless of the error level has to implement.
   */
 trait LoggerTrait {
-
     /**
-     * System is unusable.
-     *
-     * @param string $message
-     * @param array  $context
-     *
-     * @return void
-     */
-    public function emergency($message, array $context = []) {
+      * System is unusable.
+      */
+    public function emergency(string|\Stringable $message, array $context = []): void {
         $this->log(LogLevel::EMERGENCY, $message, $context);
     }
 
     /**
-     * Action must be taken immediately.
-     *
-     * Example: Entire website down, database unavailable, etc. This should
-     * trigger the SMS alerts and wake you up.
-     *
-     * @param string $message
-     * @param array  $context
-     *
-     * @return void
-     */
-    public function alert($message, array $context = []) {
+      * Action must be taken immediately.
+      *
+      * Example: Entire website down, database unavailable, etc. This should
+      * trigger the SMS alerts and wake you up.
+      */
+    public function alert(string|\Stringable $message, array $context = []): void {
         $this->log(LogLevel::ALERT, $message, $context);
     }
 
     /**
-     * Critical conditions.
-     *
-     * Example: Application component unavailable, unexpected exception.
-     *
-     * @param string $message
-     * @param array  $context
-     *
-     * @return void
-     */
-    public function critical($message, array $context = []) {
+      * Critical conditions.
+      *
+      * Example: Application component unavailable, unexpected exception.
+      */
+    public function critical(string|\Stringable $message, array $context = []): void {
         $this->log(LogLevel::CRITICAL, $message, $context);
     }
 
     /**
-     * Runtime errors that do not require immediate action but should typically
-     * be logged and monitored.
-     *
-     * @param string $message
-     * @param array  $context
-     *
-     * @return void
-     */
-    public function error($message, array $context = []) {
+      * Runtime errors that do not require immediate action but should typically
+      * be logged and monitored.
+      */
+    public function error(string|\Stringable $message, array $context = []): void {
         $this->log(LogLevel::ERROR, $message, $context);
     }
 
     /**
-     * Exceptional occurrences that are not errors.
-     *
-     * Example: Use of deprecated APIs, poor use of an API, undesirable things
-     * that are not necessarily wrong.
-     *
-     * @param string $message
-     * @param array  $context
-     *
-     * @return void
-     */
-    public function warning($message, array $context = []) {
+      * Exceptional occurrences that are not errors.
+      *
+      * Example: Use of deprecated APIs, poor use of an API, undesirable things
+      * that are not necessarily wrong.
+      */
+    public function warning(string|\Stringable $message, array $context = []): void {
         $this->log(LogLevel::WARNING, $message, $context);
     }
 
     /**
-     * Normal but significant events.
-     *
-     * @param string $message
-     * @param array  $context
-     *
-     * @return void
-     */
-    public function notice($message, array $context = []) {
+      * Normal but significant events.
+      */
+    public function notice(string|\Stringable $message, array $context = []): void {
         $this->log(LogLevel::NOTICE, $message, $context);
     }
 
     /**
-     * Interesting events.
-     *
-     * Example: User logs in, SQL logs.
-     *
-     * @param string $message
-     * @param array  $context
-     *
-     * @return void
-     */
-    public function info($message, array $context = []) {
+      * Interesting events.
+      *
+      * Example: User logs in, SQL logs.
+      */
+    public function info(string|\Stringable $message, array $context = []): void {
         $this->log(LogLevel::INFO, $message, $context);
     }
 
     /**
-     * Detailed debug information.
-     *
-     * @param string $message
-     * @param array  $context
-     *
-     * @return void
-     */
-    public function debug($message, array $context = []) {
+      * Detailed debug information.
+      */
+    public function debug(string|\Stringable $message, array $context = []): void {
         $this->log(LogLevel::DEBUG, $message, $context);
     }
 
     /**
-     * Logs with an arbitrary level.
-     *
-     * @param mixed  $level
-     * @param string $message
-     * @param array  $context
-     *
-     * @return void
-     *
-     * @throws \Psr\Log\InvalidArgumentException
-     */
-    abstract public function log(string $level, $message, array $context = []);
+      * Logs with an arbitrary level.
+      *
+      * @param mixed $level
+      *
+      * @throws \Psr\Log\InvalidArgumentException
+      */
+    abstract public function log($level, string|\Stringable $message, array $context = []): void;
 }
