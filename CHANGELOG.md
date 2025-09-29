@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file, in reverse 
 ## Changelog by package
 
 - [psr/http-message](psr_http-message_CHANGELOG.md)
+- [fig/http-message-util](psr_http-message-util_CHANGELOG.md)
+- [psr/http-client](psr_http-client_CHANGELOG.md)
+- [psr/clock](psr_clock_CHANGELOG.md)
 
 ## 2.0.0 - 2023-04-04 - psr/http-message
 
