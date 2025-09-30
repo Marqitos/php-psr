@@ -1,10 +1,51 @@
 {
     "require": {
         "php": "^7.2 || ^8.0",
-        "fig/http-message-util": "1.1.5",
-        "psr/clock": "1.0.0",
-        "psr/http-client": "1.0.3",
-        "psr/http-message": "2.0",
-        "psr/log": "3.0.2"
+        "fig/http-message-util": "^1.1.5",
+        "psr/clock": "^1.0.0",
+        "psr/http-client": "^1.0.3",
+        "psr/http-message": "^2.0",
+        "psr/log": "^3.0.2"
+    },
+    "require-dev": {
+        "php-parallel-lint/php-console-highlighter": "^1.0",
+        "php-parallel-lint/php-parallel-lint": "^1.4",
+        "phpstan/phpstan": "^2.1",
+        "slevomat/coding-standard": "^8.24",
+        "squizlabs/php_codesniffer": "^4.0"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },    
+    "scripts": {
+        "dev:analyze": "@dev:analyze:phpstan",
+        "dev:analyze:phpstan": "phpstan analyse --ansi --memory-limit 1G --configuration phpstan.neon",
+        "dev:build:clean": "git clean -fX build/",
+        "dev:lint": [
+            "@dev:lint:syntax",
+            "@dev:lint:style"
+        ],        
+        "dev:lint:fix": "phpcbf --cache=build/cache/phpcs.cache",
+        "dev:lint:style": "phpcs --cache=build/cache/phpcs.cache --colors",
+        "dev:lint:syntax": "parallel-lint --colors src/",
+        "dev:test": [
+            "@dev:lint",
+            "@dev:analyze"
+        ],
+        "test": "@dev:test"
+    },
+    "scripts-descriptions": {
+        "dev:analyze": "Runs all static analysis checks.",
+        "dev:analyze:phpstan": "Runs the PHPStan static analyzer.",
+        "dev:build:clean": "Cleans the build/ directory.",
+        "dev:lint": "Runs all linting checks.",
+        "dev:lint:fix": "Auto-fixes coding standards issues, if possible.",
+        "dev:lint:style": "Checks for coding standards issues.",
+        "dev:lint:syntax": "Checks for syntax errors.",
+        "dev:test": "Runs linting and static analysis.",
+        "test": "Runs linting and static analysis."
     }
 }

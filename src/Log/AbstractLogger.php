@@ -1,9 +1,6 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Psr\Log;
-
-use Psr\Log\LoggerInterface;
-use Psr\Log\LoggerTrait;
 
 require_once 'Psr/Log/LoggerInterface.php';
 require_once 'Psr/Log/LoggerTrait.php';

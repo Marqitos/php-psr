@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Psr\Http\Message;
 
@@ -102,7 +102,7 @@ interface UriInterface {
      * If no port is present, but a scheme is present, this method MAY return
      * the standard port for that scheme, but SHOULD return null.
      *
-     * @return null|int The URI port.
+     * @return int|null The URI port.
      */
     public function getPort(): ?int;
 
@@ -201,7 +201,7 @@ interface UriInterface {
      * information.
      *
      * @param string $user The user name to use for authority.
-     * @param null|string $password The password associated with $user.
+     * @param string|null $password The password associated with $user.
      * @return static A new instance with the specified user information.
      */
     public function withUserInfo(string $user, ?string $password = null): UriInterface;
@@ -232,7 +232,7 @@ interface UriInterface {
      * A null value provided for the port is equivalent to removing the port
      * information.
      *
-     * @param null|int $port The port to use with the new instance; a null value
+     * @param int|null $port The port to use with the new instance; a null value
      *     removes the port information.
      * @return static A new instance with the specified port.
      * @throws \InvalidArgumentException for invalid ports.

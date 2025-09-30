@@ -1,6 +1,8 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Psr\Log;
+
+use Stringable;
 
 /**
   * Describes a logger instance.
@@ -23,7 +25,7 @@ interface LoggerInterface {
       *
       * @param mixed[] $context
       */
-    public function emergency(string|\Stringable $message, array $context = []): void;
+    public function emergency(string | Stringable $message, array $context = []): void;
 
     /**
       * Action must be taken immediately.
@@ -33,7 +35,7 @@ interface LoggerInterface {
       *
       * @param mixed[] $context
       */
-    public function alert(string|\Stringable $message, array $context = []): void;
+    public function alert(string | Stringable $message, array $context = []): void;
 
     /**
       * Critical conditions.
@@ -42,7 +44,7 @@ interface LoggerInterface {
       *
       * @param mixed[] $context
       */
-    public function critical(string|\Stringable $message, array $context = []): void;
+    public function critical(string | Stringable $message, array $context = []): void;
 
     /**
       * Runtime errors that do not require immediate action but should typically
@@ -50,7 +52,7 @@ interface LoggerInterface {
       *
       * @param mixed[] $context
       */
-    public function error(string|\Stringable $message, array $context = []): void;
+    public function error(string | Stringable $message, array $context = []): void;
 
     /**
       * Exceptional occurrences that are not errors.
@@ -60,14 +62,14 @@ interface LoggerInterface {
       *
       * @param mixed[] $context
       */
-    public function warning(string|\Stringable $message, array $context = []): void;
+    public function warning(string | Stringable $message, array $context = []): void;
 
     /**
       * Normal but significant events.
       *
       * @param mixed[] $context
       */
-    public function notice(string|\Stringable $message, array $context = []): void;
+    public function notice(string | Stringable $message, array $context = []): void;
 
     /**
       * Interesting events.
@@ -76,22 +78,22 @@ interface LoggerInterface {
       *
       * @param mixed[] $context
       */
-    public function info(string|\Stringable $message, array $context = []): void;
+    public function info(string | Stringable $message, array $context = []): void;
 
     /**
       * Detailed debug information.
       *
       * @param mixed[] $context
       */
-    public function debug(string|\Stringable $message, array $context = []): void;
+    public function debug(string | Stringable $message, array $context = []): void;
 
     /**
       * Logs with an arbitrary level.
       *
-      * @param mixed $level
+      * @param mixed   $level
       * @param mixed[] $context
       *
-      * @throws \Psr\Log\InvalidArgumentException
+      * @throws InvalidArgumentException
       */
-    public function log($level, string|\Stringable $message, array $context = []): void;
+    public function log($level, string | Stringable $message, array $context = []): void;
 }
