@@ -1,4 +1,15 @@
 {
+    "name": "rodas/psr-scaffold",
+    "description": "PSR and FIG packages, with scaffolding autoload",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marcos Porto Mariño",
+            "email": "php@marcospor.to"
+        }
+    ],
+    "minimum-stability": "stable",
     "require": {
         "php": "^7.2 || ^8.0",
         "fig/http-message-util": "^1.1.5",
