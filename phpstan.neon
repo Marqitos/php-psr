@@ -4,3 +4,9 @@ parameters:
     treatPhpDocTypesAsCertain: false
     paths:
         - ./src
+    bootstrapFiles:
+        - phpstan-bootstrap.php
+    ignoreErrors:
+        -
+            identifier: trait.unused
+            path: src/Log/LoggerAwareTrait.php
