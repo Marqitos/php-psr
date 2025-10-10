@@ -2,7 +2,7 @@
 
 namespace Psr\Log;
 
-require_once 'Psr/Log/LoggerInterface.php';
+require_once __DIR__ . 'LoggerInterface.php';
 
 /**
   * Describes a logger-aware instance.

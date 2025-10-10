@@ -4,7 +4,7 @@ namespace Psr\Http\Message;
 
 use Psr\Http\Message\RequestInterface;
 
-require_once 'RequestInterface.php';
+require_once __DIR__ . 'RequestInterface.php';
 
 /**
  * Representation of an incoming, server-side HTTP request.

@@ -2,8 +2,8 @@
 
 namespace Psr\Log;
 
-require_once 'Psr/Log/LoggerInterface.php';
-require_once 'Psr/Log/LoggerTrait.php';
+require_once __DIR__ . 'LoggerInterface.php';
+require_once __DIR__ . 'LoggerTrait.php';
 
 /**
   * This is a simple Logger implementation that other Loggers can inherit from.

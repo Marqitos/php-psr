@@ -2,6 +2,8 @@
 
 namespace Psr\Log;
 
+require_once __DIR__ . 'LoggerInterface.php';
+
 /**
   * Basic Implementation of LoggerAwareInterface.
   */

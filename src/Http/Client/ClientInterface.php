@@ -5,8 +5,8 @@ namespace Psr\Http\Client;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-require_once 'Psr/Http/Message/RequestInterface.php';
-require_once 'Psr/Http/Message/ResponseInterface.php';
+require_once __DIR__ . '../Message/RequestInterface.php';
+require_once __DIR__ . '../Message/ResponseInterface.php';
 
 interface ClientInterface {
     /**

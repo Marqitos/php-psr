@@ -4,7 +4,7 @@ namespace Psr\Http\Client;
 
 use Psr\Http\Message\RequestInterface;
 
-require_once 'Psr/Http/Message/RequestInterface.php';
+require_once __DIR__ . '../Message/RequestInterface.php';
 
 /**
  * Thrown when the request cannot be completed because of network issues.

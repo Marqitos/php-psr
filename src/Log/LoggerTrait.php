@@ -4,7 +4,7 @@ namespace Psr\Log;
 
 use Stringable;
 
-require_once 'Psr/Log/LogLevel.php';
+require_once __DIR__ . 'LogLevel.php';
 
 /**
   * This is a simple Logger trait that classes unable to extend AbstractLogger

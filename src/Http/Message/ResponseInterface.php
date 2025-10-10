@@ -2,6 +2,8 @@
 
 namespace Psr\Http\Message;
 
+require_once __DIR__ . 'MessageInterface.php';
+
 /**
  * Representation of an outgoing, server-side response.
  *

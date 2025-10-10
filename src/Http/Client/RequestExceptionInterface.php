@@ -5,8 +5,8 @@ namespace Psr\Http\Client;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Message\RequestInterface;
 
-require_once 'Psr/Http/Client/ClientExceptionInterface.php';
-require_once 'Psr/Http/Message/RequestInterface.php';
+require_once __DIR__ . '../Client/ClientExceptionInterface.php';
+require_once __DIR__ . '../Message/RequestInterface.php';
 
 /**
  * Exception for when a request failed.

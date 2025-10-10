@@ -2,6 +2,8 @@
 
 namespace Psr\Http\Message;
 
+require_once __DIR__ . 'StreamInterface.php';
+
 /**
  * Value object representing a file uploaded through an HTTP request.
  *

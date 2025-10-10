@@ -4,7 +4,7 @@ namespace Psr\Log;
 
 use Stringable;
 
-require_once 'Psr/Log/AbstractLogger.php';
+require_once __DIR__ . 'AbstractLogger.php';
 
 /**
   * This Logger can be used to avoid conditional log calls.
