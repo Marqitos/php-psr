@@ -2,6 +2,11 @@
     "name": "rodas/psr-scaffold",
     "description": "PSR and FIG packages, with scaffolding autoload",
     "type": "library",
+    "keywords": ["psr",
+        "psr-3", "log",
+        "psr-7", "http", "http-message", "request", "response",
+        "psr-18", "http-client",
+        "psr-20", "time", "clock", "now"],
     "license": "MIT",
     "authors": [
         {
@@ -11,12 +16,12 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": "^7.2 || ^8.0",
-        "fig/http-message-util": "^1.1.5",
-        "psr/clock": "^1.0.0",
-        "psr/http-client": "^1.0.3",
-        "psr/http-message": "^2.0",
-        "psr/log": "^3.0.2"
+        "php": ">=8.0.0",
+        "fig/http-message-util": ">=1.1",
+        "psr/clock": ">=1.0",
+        "psr/http-client": ">=1.0",
+        "psr/http-message": ">=2.0",
+        "psr/log": ">=3.0"
     },
     "require-dev": {
         "php-parallel-lint/php-console-highlighter": "^1.0",
