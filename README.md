@@ -12,7 +12,7 @@ These recommendations cover a wide variety of practices and conventions, from co
 
 ### Basics
 
-- The LoggerInterface exposes eight methods to write logs to the eight RFC 5424 levels (debug, info, notice, warning, error, critical, alert, emergency).
+- The LoggerInterface exposes eight methods to write logs to the eight RFC 5424 levels (`debug`, `info`, `notice`, `warning`, `error`, `critical`, `alert`, `emergency`).
 
 - A ninth method, log, accepts a log level as the first argument. Calling this method with one of the log level constants MUST have the same result as calling the level-specific method. Calling this method with a level not defined by this specification MUST throw a Psr\Log\InvalidArgumentException if the implementation does not know about the level. Users SHOULD NOT use a custom level without knowing for sure the current implementation supports it.
 
@@ -29,7 +29,8 @@ These recommendations cover a wide variety of practices and conventions, from co
 
 ### References
 
-- [RFC 2119](http://tools.ietf.org/html/rfc2119)
+- [RFC 2119](https://tools.ietf.org/html/rfc2119)
+- [RFC 5424](https://tools.ietf.org/html/rfc5424)
 
 ## PSR-07 . [HTTP Message Interface](https://www.php-fig.org/psr/psr-7)
 
@@ -43,16 +44,51 @@ HTTP messages are typically abstracted from the end-user consumer, but as develo
 
 ### References
 
-- [RFC 2119](http://tools.ietf.org/html/rfc2119)
-- [RFC 3986](http://tools.ietf.org/html/rfc3986)
-- [RFC 7230](http://tools.ietf.org/html/rfc7230)
-- [RFC 7231](http://tools.ietf.org/html/rfc7231)
+- [RFC 2119](https://tools.ietf.org/html/rfc2119)
+- [RFC 3986](https://tools.ietf.org/html/rfc3986)
+- [RFC 7230](https://tools.ietf.org/html/rfc7230)
+- [RFC 7231](https://tools.ietf.org/html/rfc7231)
 
 ### Messages
 
 An HTTP message is either a request from a client to a server or a response from a server to a client. This specification defines interfaces for the HTTP messages `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` respectively.
 
 Both `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` extend `Psr\Http\Message\MessageInterface`. While `Psr\Http\Message\MessageInterface` MAY be implemented directly, implementors SHOULD implement `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface`.
+
+### PSR Http Message Util
+
+This repository holds utility classes and constants to facilitate common
+operations of [PSR-7](https://www.php-fig.org/psr/psr-7/); the primary purpose is
+to provide constants for referring to request methods, response status codes and
+messages, and potentially common headers.
+
+Implementation of PSR-7 interfaces is **not** within the scope of this package.
+
+This package includes the implementations described in the 'fig/http-message-util' package,
+but alternates the Fig\Http\Message namespace with Psr\Http\Message.
+Therefore, they are located in the same namespace and folder as the PSR-07 implementations.
+
+#### Interfaces
+
+- `Fig\Http\Message\RequestMethodInterface.php` as `Psr\Http\Message\RequestMethodInterface.php`
+- `Fig\Http\Message\StatusCodeInterface.php` as `Psr\Http\Message\StatusCodeInterface.php`
+
+#### References
+
+- [RFC 2295: section 8.1](https://tools.ietf.org/html/rfc2295#section-8.1)
+- [RFC 2324: section 2.3](https://tools.ietf.org/html/rfc2324#section-2.3)
+- [RFC 2518: section 9.7](https://tools.ietf.org/html/rfc2518#section-9.7)
+- [RFC 2774: section 7](https://tools.ietf.org/html/rfc2774#section-7)
+- [RFC 3229: section 10.4](https://tools.ietf.org/html/rfc3229#section-10.4)
+- [RFC 4918: section 11](https://tools.ietf.org/html/rfc4918#section-11)
+- [RFC 5842: section 7.1](https://tools.ietf.org/html/rfc5842#section-7.1) & [section 7.2](https://tools.ietf.org/html/rfc5842#section-7.2)
+- [RFC 6585: section 3](https://tools.ietf.org/html/rfc6585#section-3), [section 4](https://tools.ietf.org/html/rfc6585#section-4), [section 5](https://tools.ietf.org/html/rfc6585#section-5) & [section 6](https://tools.ietf.org/html/rfc6585#section-6)
+- [RFC 7231: section 6](https://tools.ietf.org/html/rfc7231#section-6)
+- [RFC 7238: section 3](https://tools.ietf.org/html/rfc7238#section-3)
+- [RFC 7725: section 3](https://tools.ietf.org/html/rfc7725#section-3)
+- [RFC 7540: section 9.1.2](https://tools.ietf.org/html/rfc7540#section-9.1.2)
+- [RFC 8297: section 2](https://tools.ietf.org/html/rfc8297#section-2)
+- [RFC 8470: section 7](https://tools.ietf.org/html/rfc8470#section-7)
 
 ## PSR-18 . [HTTP Client](https://www.php-fig.org/psr/psr-18)
 
@@ -120,8 +156,9 @@ This should be done by using the `getTimestamp()` method on the returned `\DateT
 
 ### References
 
-- [RFC 2119](http://tools.ietf.org/html/rfc2119)
+- [RFC 2119](https://tools.ietf.org/html/rfc2119)
 
 ---
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Marqitos/php-psr)
 
 [^1]:**[Implementation versions](VERSIONS.md)**
