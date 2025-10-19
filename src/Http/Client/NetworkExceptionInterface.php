@@ -16,6 +16,7 @@ namespace Psr\Http\Client;
 
 use Psr\Http\Message\RequestInterface;
 
+require_once __DIR__ . '/ClientExceptionInterface.php';
 require_once __DIR__ . '/../Message/RequestInterface.php';
 
 /**
