@@ -27,6 +27,7 @@
         "php-parallel-lint/php-console-highlighter": "^1.0",
         "php-parallel-lint/php-parallel-lint": "^1.4",
         "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^12.4",
         "slevomat/coding-standard": "^8.24",
         "squizlabs/php_codesniffer": "^4.0"
     },
@@ -59,8 +60,12 @@
         "dev:lint:syntax": "parallel-lint --colors src/",
         "dev:test": [
             "@dev:lint",
-            "@dev:analyze"
+            "@dev:analyze",
+            "@dev:test:unit"
         ],
+        "dev:test:coverage:ci": "@php -d 'xdebug.mode=coverage' vendor/bin/phpunit --colors=always --coverage-text --coverage-clover build/coverage/clover.xml --coverage-cobertura build/coverage/cobertura.xml --coverage-crap4j build/coverage/crap4j.xml --coverage-xml build/coverage/coverage-xml --log-junit build/junit.xml",
+        "dev:test:coverage:html": "@php -d 'xdebug.mode=coverage' vendor/bin/phpunit --colors=always --coverage-html build/coverage/coverage-html/",
+        "dev:test:unit": "phpunit --colors=always",
         "test": "@dev:test"
     },
     "scripts-descriptions": {
@@ -72,6 +77,9 @@
         "dev:lint:style": "Checks for coding standards issues.",
         "dev:lint:syntax": "Checks for syntax errors.",
         "dev:test": "Runs linting and static analysis.",
+        "dev:test:coverage:ci": "Runs unit tests and generates CI coverage reports.",
+        "dev:test:coverage:html": "Runs unit tests and generates HTML coverage report.",
+        "dev:test:unit": "Runs unit tests.",
         "test": "Runs linting and static analysis."
     }
 }
