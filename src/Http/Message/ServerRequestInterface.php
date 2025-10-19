@@ -1,10 +1,22 @@
-<?php declare(strict_types=1);
+<?php
+/**
+ * This file is part of the Psr\Http\Message library
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @copyright 2014 PHP Framework Interoperability Group
+ * @license https://opensource.org/license/MIT MIT
+ * @link https://www.php-fig.org/psr/psr-7
+ */
+
+declare(strict_types=1);
 
 namespace Psr\Http\Message;
 
 use Psr\Http\Message\RequestInterface;
 
-require_once __DIR__ . 'RequestInterface.php';
+require_once __DIR__ . '/RequestInterface.php';
 
 /**
  * Representation of an incoming, server-side HTTP request.

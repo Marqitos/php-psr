@@ -1,10 +1,22 @@
-<?php declare(strict_types=1);
+<?php
+/**
+ * This file is part of the Psr\Log library
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @copyright 2012 PHP Framework Interoperability Group
+ * @license https://opensource.org/license/MIT MIT
+ * @link https://www.php-fig.org/psr/psr-3
+ */
+
+declare(strict_types=1);
 
 namespace Psr\Log;
 
 use Stringable;
 
-require_once __DIR__ . 'AbstractLogger.php';
+require_once __DIR__ . '/AbstractLogger.php';
 
 /**
   * This Logger can be used to avoid conditional log calls.
@@ -15,14 +27,22 @@ require_once __DIR__ . 'AbstractLogger.php';
   * blocks.
   */
 class NullLogger extends AbstractLogger {
+# LoggerTrait members
+
     /**
       * Logs with an arbitrary level.
       *
-      * @param mixed[] $context
+      * @param mixed               $level   Log level, MUST be a LogLevel constant.
+      * @param string|Stringable   $message Message to save in the log record.
+      * @param array<string,mixed> $context Aditional log data.
       *
-      * @throws InvalidArgumentException
+      * @return void                        Void return
+      *
+      * @throws InvalidArgumentException    If log level is not a valid LogLevel constant.
       */
-    public function log($level, string | Stringable $message, array $context = []): void {
+    public function log(mixed $level, string | Stringable $message, array $context = []): void {
         // Noop.
     }
+
+# -- LoggerTrait members
 }
