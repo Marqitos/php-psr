@@ -1,10 +1,30 @@
 # PHP Standards Recommendations
 
+This package compiles several [PHP Standards Recommendations](https://www.php-fig.org/psr) packages, so they can be loaded using Fallback Autoload or even require_once.
+The packages included are:
+
+- psr/clock
+- psr/http-client
+- psr/http-message
+- psr/log
+- fig/http-message-util (The Fig namespace has been renamed to Psr)
+
+```text
+src/             (Psr\ namespace)
+├── Clock/       (psr/clock)
+└── Http/
+    ├── Client/  (psr/http-client)
+    ├── Message/ (psr/http-message & fig/http-message-util)
+    └── Log/     (psr/log)
+```
+
+---
+
 The PSRs (PHP Standards Recommendations) are standards recommendations for PHP. They are proposals developed by PHP-FIG, the PHP Framework Interoperability Group, with the goal of improving interoperability between different PHP frameworks and libraries.
 
 Classes, Interfaces and Traits, work of [PHP Standards Recommendations](https://www.php-fig.org/psr), part of [The PHP framework interop group](https://www.php-fig.org)
 
-## PSR Implementations[^1]
+## PSR Implementations [^1]
 
 These recommendations cover a wide variety of practices and conventions, from coding style to project structuring. TThis repository includes several **`class`es**, **`interface`s**, and **`trait`s**; to cover the following standards:
 
