@@ -5,6 +5,7 @@
     "keywords": ["psr",
         "psr-3", "log",
         "psr-7", "http", "http-message", "request", "response",
+        "psr-17", "factory", "message",
         "psr-18", "http-client",
         "psr-20", "time", "clock", "now"],
     "license": "MIT",
@@ -20,6 +21,7 @@
         "fig/http-message-util": "^1.1",
         "psr/clock": "^1.0",
         "psr/http-client": "^1.0",
+        "psr/http-factory": "^1.1",
         "psr/http-message": "^2.0",
         "psr/log": "^3.0"
     },
@@ -30,6 +32,13 @@
         "phpunit/phpunit": "^12.4",
         "slevomat/coding-standard": "^8.24",
         "squizlabs/php_codesniffer": "^4.0"
+    },
+    "provide": {
+        "psr/clock": "1.0.0",
+        "psr/http-client": "1.0.3",
+        "psr/http-message": "2.0.0",
+        "psr/http-message-util": "1.1.5",
+        "psr/log": "3.0.2"
     },
     "autoload": {
         "psr-4": {

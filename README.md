@@ -179,6 +179,9 @@ This should be done by using the `getTimestamp()` method on the returned `\DateT
 - [RFC 2119](https://tools.ietf.org/html/rfc2119)
 
 ---
+
+📦 Available at Packagist: [rodas/psr-scaffold](https://packagist.org/packages/rodas/psr-scaffold)
+
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Marqitos/php-psr)
 
 [^1]:**[Implementation versions](VERSIONS.md)**
