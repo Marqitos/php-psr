@@ -29,6 +29,7 @@ class RequireTest extends TestCase {
     public const CLIENT_INTERFACE           = 'Psr\Http\Client\ClientInterface';
     public const CLIENT_EXCEPTION_INTERFACE = 'Psr\Http\Client\ClientExceptionInterface';
     public const NETWORK_EXCEPTION_INTERFACE= 'Psr\Http\Client\NetworkExceptionInterface';
+    public const REQUEST_EXCEPTION_INTERFACE= 'Psr\Http\Client\RequestExceptionInterface';
 
     /**
      * Test ClientInterface inheritance
@@ -149,7 +150,7 @@ class RequireTest extends TestCase {
             $existsUriInterface &&
             $existsStreamInterface;
         // All must be loaded
-        $existsNetworkExceptionInterface = interface_exists(self::NETWORK_EXCEPTION_INTERFACE);
+        $existsNetworkExceptionInterface = interface_exists(self::REQUEST_EXCEPTION_INTERFACE);
         if (!$allLoad) {
             // RequestExceptionInterface extends ClientExceptionInterface
             $existsClientExceptionInterface = interface_exists(self::CLIENT_EXCEPTION_INTERFACE, false);

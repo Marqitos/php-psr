@@ -23,6 +23,11 @@ use PHPUnit\Framework\TestCase;
  */
 class RequireTest extends TestCase {
 
+    public const ABSTRACT_LOGGER    = 'Psr\Log\AbstractLogger';
+    public const LOG_LEVEL          = 'Psr\Log\LogLevel';
+    public const LOGGER_INTERFACE   = 'Psr\Log\LoggerInterface';
+    public const LOGGER_TRAIT       = 'Psr\Log\LoggerTrait';
+
     /**
      * Test AbstractLogger inheritance
      *
@@ -31,25 +36,25 @@ class RequireTest extends TestCase {
      * @covers Psr\Log\AbstractLogger
      */
     public function testAbstractLogger(): void {
-        // Not necesary loaded
+        // Not necessary loaded
         // AbstractLogger implements LoggerInterface
-        $existsLoggerInterface = interface_exists('Psr\Log\LoggerInterface', false);
+        $existsLoggerInterface = interface_exists(self::LOGGER_INTERFACE, false);
         // AbstractLogger use LoggerTrait
-        $existsLoggerTrait = trait_exists('Psr\Log\LoggerTrait', false);
+        $existsLoggerTrait = trait_exists(self::LOGGER_TRAIT, false);
         // LoggerTrait depends LogLevel
-        $existsLogLevel = class_exists('Psr\Log\LogLevel', false);
+        $existsLogLevel = class_exists(self::LOG_LEVEL, false);
         $allLoad = $existsLoggerInterface &&
             $existsLoggerTrait &&
             $existsLogLevel;
         if (!$allLoad) {
-            class_exists('Psr\Log\AbstractLogger');
+            class_exists(self::ABSTRACT_LOGGER);
             // All must be loaded
             // AbstractLogger implements LoggerInterface
-            $existsLoggerInterface = interface_exists('Psr\Log\LoggerInterface', false);
+            $existsLoggerInterface = interface_exists(self::LOGGER_INTERFACE, false);
             // AbstractLogger use LoggerTrait
-            $existsLoggerTrait = trait_exists('Psr\Log\LoggerTrait', false);
+            $existsLoggerTrait = trait_exists(self::LOGGER_TRAIT, false);
             // LoggerTrait depends LogLevel
-            $existsLogLevel = class_exists('Psr\Log\LogLevel', false);
+            $existsLogLevel = class_exists(self::LOG_LEVEL, false);
             $allLoad = $existsLoggerInterface &&
                 $existsLoggerTrait &&
                 $existsLogLevel;
@@ -65,14 +70,14 @@ class RequireTest extends TestCase {
      * @covers Psr\Log\LoggerAwareInterface
      */
     public function testLoggerAwareInterface(): void {
-        // Not necesary loaded
+        // Not necessary loaded
         // LoggerAwareInterface depends LoggerInterface
-        $existsLoggerInterface = interface_exists('Psr\Log\LoggerInterface', false);
+        $existsLoggerInterface = interface_exists(self::LOGGER_INTERFACE, false);
         if (!$existsLoggerInterface) {
             class_exists('Psr\Log\LoggerAwareInterface');
             // LoggerInterface must be loaded
             // LoggerAwareInterface depends LoggerInterface
-            $existsLoggerInterface = interface_exists('Psr\Log\LoggerInterface', false);
+            $existsLoggerInterface = interface_exists(self::LOGGER_INTERFACE, false);
         }
         $this->assertTrue($existsLoggerInterface);
     }
@@ -85,14 +90,14 @@ class RequireTest extends TestCase {
      * @covers Psr\Log\LoggerAwareTrait
      */
     public function testLoggerAwareTrait(): void {
-        // Not necesary loaded
+        // Not necessary loaded
         // LoggerAwareTrait depends LoggerInterface
-        $existsLoggerInterface = interface_exists('Psr\Log\LoggerInterface', false);
+        $existsLoggerInterface = interface_exists(self::LOGGER_INTERFACE, false);
         if (!$existsLoggerInterface) {
             class_exists('Psr\Log\LoggerAwareTrait');
             // LoggerInterface must be loaded
             // LoggerAwareTrait depends LoggerInterface
-            $existsLoggerInterface = interface_exists('Psr\Log\LoggerInterface', false);
+            $existsLoggerInterface = interface_exists(self::LOGGER_INTERFACE, false);
         }
         $this->assertTrue($existsLoggerInterface);
     }
@@ -105,14 +110,14 @@ class RequireTest extends TestCase {
      * @covers Psr\Log\LoggerTrait
      */
     public function testLoggerTrait(): void {
-        // Not necesary loaded
+        // Not necessary loaded
         // LoggerTrait depends LogLevel
-        $existsLogLevel = class_exists('Psr\Log\LogLevel', false);
+        $existsLogLevel = class_exists(self::LOG_LEVEL, false);
         if (!$existsLogLevel) {
-            class_exists('Psr\Log\LoggerTrait');
+            class_exists(self::LOGGER_TRAIT);
             // LogLevel must be loaded
             // LoggerTrait depends LogLevel
-            $existsLogLevel = class_exists('Psr\Log\LogLevel', false);
+            $existsLogLevel = class_exists(self::LOG_LEVEL, false);
         }
         $this->assertTrue($existsLogLevel);
     }
@@ -125,15 +130,15 @@ class RequireTest extends TestCase {
      * @covers Psr\Log\NullLogger
      */
     public function testNullLogger(): void {
-        // Not necesary loaded
+        // Not necessary loaded
         // NullLogger extends AbstractLogger
-        $existsAbstractLogger = class_exists('Psr\Log\AbstractLogger', false);
+        $existsAbstractLogger = class_exists(self::ABSTRACT_LOGGER, false);
         // AbstractLogger implements LoggerInterface
-        $existsLoggerInterface = interface_exists('Psr\Log\LoggerInterface', false);
+        $existsLoggerInterface = interface_exists(self::LOGGER_INTERFACE, false);
         // AbstractLogger use LoggerTrait
-        $existsLoggerTrait = trait_exists('Psr\Log\LoggerTrait', false);
+        $existsLoggerTrait = trait_exists(self::LOGGER_TRAIT, false);
         // LoggerTrait depends LogLevel
-        $existsLogLevel = class_exists('Psr\Log\LogLevel', false);
+        $existsLogLevel = class_exists(self::LOG_LEVEL, false);
         $allLoad = $existsAbstractLogger &&
             $existsLoggerInterface &&
             $existsLoggerTrait &&
@@ -142,13 +147,13 @@ class RequireTest extends TestCase {
             class_exists('Psr\Log\NullLogger');
             // All must be loaded
             // NullLogger extends AbstractLogger
-            $existsAbstractLogger = class_exists('Psr\Log\AbstractLogger', false);
+            $existsAbstractLogger = class_exists(self::ABSTRACT_LOGGER, false);
             // AbstractLogger implements LoggerInterface
-            $existsLoggerInterface = interface_exists('Psr\Log\LoggerInterface', false);
+            $existsLoggerInterface = interface_exists(self::LOGGER_INTERFACE, false);
             // AbstractLogger use LoggerTrait
-            $existsLoggerTrait = trait_exists('Psr\Log\LoggerTrait', false);
+            $existsLoggerTrait = trait_exists(self::LOGGER_TRAIT, false);
             // LoggerTrait depends LogLevel
-            $existsLogLevel = class_exists('Psr\Log\LogLevel', false);
+            $existsLogLevel = class_exists(self::LOG_LEVEL, false);
             $allLoad = $existsAbstractLogger &&
                 $existsLoggerInterface &&
                 $existsLoggerTrait &&
@@ -156,5 +161,4 @@ class RequireTest extends TestCase {
         }
         $this->assertTrue($allLoad);
     }
-    
 }
