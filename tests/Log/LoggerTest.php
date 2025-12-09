@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace Psr\Test\Log;
 
+use Psr\Log\InvalidArgumentException;
 use Psr\Log\LogLevel;
 use PHPUnit\Framework\TestCase;
 
@@ -144,6 +145,20 @@ class LoggerTest extends TestCase {
         $logger->debug($message);
         $this->assertEquals(LogLevel::DEBUG, $logger->level);
         $this->assertEquals($message, $logger->message);
+    }
+    
+    /**
+     * Test LoggerInterface::log()
+     *
+     * @covers LoggerInterface::log
+     * @covers InvalidArgumentException
+     *
+     * @return void
+     */
+    public function testExceptionLog(): void {
+        $this->expectException(InvalidArgumentException::class);
+        $logger = new Logger();
+        $logger->log('other', 'other message');
     }
 
 }

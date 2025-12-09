@@ -23,6 +23,14 @@ use PHPUnit\Framework\TestCase;
  */
 class RequireTest extends TestCase {
 
+    public const MESSAGE_INTERFACE          = 'Psr\Http\Message\MessageInterface';
+    public const REQUEST_INTERFACE          = 'Psr\Http\Message\RequestInterface';
+    public const RESPONSE_INTERFACE         = 'Psr\Http\Message\ResponseInterface';
+    public const SERVER_REQUEST_INTERFACE   = 'Psr\Http\Message\ServerRequestInterface';
+    public const STREAM_INTERFACE           = 'Psr\Http\Message\StreamInterface';
+    public const UPLOADED_FILE_INTERFACE    = 'Psr\Http\Message\UploadedFileInterface';
+    public const URI_INTERFACE              = 'Psr\Http\Message\UriInterface';
+
     /**
      * Test MessageInterface inheritance
      *
@@ -31,15 +39,15 @@ class RequireTest extends TestCase {
      * @covers Psr\Http\Message\MessageInterface
      */
     public function testMessageInterface(): void {
-        // Not necesary loaded
+        // Not necessary loaded
         // MessageInterface depends StreamInterface
-        $existsStreamInterface = interface_exists('Psr\Http\Message\StreamInterface', false);
+        $existsStreamInterface = interface_exists(self::STREAM_INTERFACE, false);
         $allLoad = $existsStreamInterface;
         // All must be loaded
-        $existsMessageInterface = interface_exists('Psr\Http\Message\MessageInterface');
+        $existsMessageInterface = interface_exists(self::MESSAGE_INTERFACE);
         if (!$allLoad) {
             // MessageInterface depends StreamInterface
-            $existsStreamInterface = interface_exists('Psr\Http\Message\StreamInterface', false);
+            $existsStreamInterface = interface_exists(self::STREAM_INTERFACE, false);
         }
         $allLoad = $existsMessageInterface &&
             $existsStreamInterface;
@@ -54,25 +62,25 @@ class RequireTest extends TestCase {
      * @covers Psr\Http\Message\RequestInterface
      */
     public function testRequestInterface(): void {
-        // Not necesary loaded
+        // Not necessary loaded
         // RequestInterface implements MessageInterface
-        $existsMessageInterface = interface_exists('Psr\Http\Message\MessageInterface', false);
+        $existsMessageInterface = interface_exists(self::MESSAGE_INTERFACE, false);
         // RequestInterface depends UriInterface
-        $existsUriInterface = interface_exists('Psr\Http\Message\UriInterface', false);
+        $existsUriInterface = interface_exists(self::URI_INTERFACE, false);
         // MessageInterface depends StreamInterface
-        $existsStreamInterface = interface_exists('Psr\Http\Message\StreamInterface', false);
+        $existsStreamInterface = interface_exists(self::STREAM_INTERFACE, false);
         $allLoad = $existsMessageInterface &&
             $existsUriInterface &&
             $existsStreamInterface;
         // All must be loaded
-        $existsRequestInterface = interface_exists('Psr\Http\Message\RequestInterface');
+        $existsRequestInterface = interface_exists(self::REQUEST_INTERFACE);
         if (!$allLoad) {
             // RequestInterface implements MessageInterface
-            $existsMessageInterface = interface_exists('Psr\Http\Message\MessageInterface', false);
+            $existsMessageInterface = interface_exists(self::MESSAGE_INTERFACE, false);
             // RequestInterface depends UriInterface
-            $existsUriInterface = interface_exists('Psr\Http\Message\UriInterface', false);
+            $existsUriInterface = interface_exists(self::URI_INTERFACE, false);
             // MessageInterface depends StreamInterface
-            $existsStreamInterface = interface_exists('Psr\Http\Message\StreamInterface', false);
+            $existsStreamInterface = interface_exists(self::STREAM_INTERFACE, false);
         }
         $allLoad = $existsRequestInterface &&
             $existsMessageInterface &&
@@ -89,20 +97,20 @@ class RequireTest extends TestCase {
      * @covers Psr\Http\Message\ResponseInterface
      */
     public function testResponseInterface(): void {
-        // Not necesary loaded
+        // Not necessary loaded
         // ResponseInterface implements MessageInterface
-        $existsMessageInterface = interface_exists('Psr\Http\Message\MessageInterface', false);
+        $existsMessageInterface = interface_exists(self::MESSAGE_INTERFACE, false);
         // MessageInterface depends StreamInterface
-        $existsStreamInterface = interface_exists('Psr\Http\Message\StreamInterface', false);
+        $existsStreamInterface = interface_exists(self::STREAM_INTERFACE, false);
         $allLoad = $existsMessageInterface &&
             $existsStreamInterface;
         // All must be loaded
-        $existsResponseInterface = interface_exists('Psr\Http\Message\ResponseInterface');
+        $existsResponseInterface = interface_exists(self::RESPONSE_INTERFACE);
         if (!$allLoad) {
             // ResponseInterface implements MessageInterface
-            $existsMessageInterface = interface_exists('Psr\Http\Message\MessageInterface', false);
+            $existsMessageInterface = interface_exists(self::MESSAGE_INTERFACE, false);
             // MessageInterface depends StreamInterface
-            $existsStreamInterface = interface_exists('Psr\Http\Message\StreamInterface', false);
+            $existsStreamInterface = interface_exists(self::STREAM_INTERFACE, false);
         }
         $allLoad = $existsResponseInterface &&
             $existsMessageInterface &&
@@ -118,25 +126,25 @@ class RequireTest extends TestCase {
      * @covers Psr\Http\Message\ServerRequestInterface
      */
     public function testServerRequestInterface(): void {
-        // Not necesary loaded
+        // Not necessary loaded
         // ServerRequestInterface implements RequestInterface
-        $existsRequestInterface = interface_exists('Psr\Http\Message\RequestInterface', false);
+        $existsRequestInterface = interface_exists(self::REQUEST_INTERFACE, false);
         // RequestInterface implements MessageInterface
-        $existsMessageInterface = interface_exists('Psr\Http\Message\MessageInterface', false);
+        $existsMessageInterface = interface_exists(self::MESSAGE_INTERFACE, false);
         // MessageInterface depends StreamInterface
-        $existsStreamInterface = interface_exists('Psr\Http\Message\StreamInterface', false);
+        $existsStreamInterface = interface_exists(self::STREAM_INTERFACE, false);
         $allLoad = $existsRequestInterface &&
             $existsMessageInterface &&
             $existsStreamInterface;
         // All must be loaded
-        $existsServerRequestInterface = interface_exists('Psr\Http\Message\ServerRequestInterface');
+        $existsServerRequestInterface = interface_exists(self::SERVER_REQUEST_INTERFACE);
         if (!$allLoad) {
             // ServerRequestInterface implements RequestInterface
-            $existsRequestInterface = interface_exists('Psr\Http\Message\RequestInterface', false);
+            $existsRequestInterface = interface_exists(self::REQUEST_INTERFACE, false);
             // RequestInterface implements MessageInterface
-            $existsMessageInterface = interface_exists('Psr\Http\Message\MessageInterface', false);
+            $existsMessageInterface = interface_exists(self::MESSAGE_INTERFACE, false);
             // MessageInterface depends StreamInterface
-            $existsStreamInterface = interface_exists('Psr\Http\Message\StreamInterface', false);
+            $existsStreamInterface = interface_exists(self::STREAM_INTERFACE, false);
         }
         $allLoad = $existsServerRequestInterface &&
             $existsRequestInterface &&
@@ -153,15 +161,15 @@ class RequireTest extends TestCase {
      * @covers Psr\Http\Message\UploadedFileInterface
      */
     public function testUploadedFileInterface(): void {
-        // Not necesary loaded
+        // Not necessary loaded
         // UploadedFileInterface depends StreamInterface
-        $existsStreamInterface = interface_exists('Psr\Http\Message\StreamInterface', false);
+        $existsStreamInterface = interface_exists(self::STREAM_INTERFACE, false);
         $allLoad = $existsStreamInterface;
         // All must be loaded
-        $existsUploadedFileInterface = interface_exists('Psr\Http\Message\UploadedFileInterface');
+        $existsUploadedFileInterface = interface_exists(self::UPLOADED_FILE_INTERFACE);
         if (!$allLoad) {
             // UploadedFileInterface depends StreamInterface
-            $existsStreamInterface = interface_exists('Psr\Http\Message\StreamInterface', false);
+            $existsStreamInterface = interface_exists(self::STREAM_INTERFACE, false);
         }
         $allLoad = $existsUploadedFileInterface &&
             $existsStreamInterface;
