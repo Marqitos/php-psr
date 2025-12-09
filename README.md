@@ -5,6 +5,7 @@ The packages included are:
 
 - psr/clock
 - psr/http-client
+- psr/http-factory
 - psr/http-message
 - psr/log
 - fig/http-message-util (The Fig namespace has been renamed to Psr)
@@ -14,7 +15,7 @@ src/             (Psr\ namespace)
 ├── Clock/       (psr/clock)
 └── Http/
     ├── Client/  (psr/http-client)
-    ├── Message/ (psr/http-message & fig/http-message-util)
+    ├── Message/ (psr/http-message, psr/http-factory & fig/http-message-util)
     └── Log/     (psr/log)
 ```
 
@@ -109,6 +110,36 @@ Therefore, they are located in the same namespace and folder as the PSR-07 imple
 - [RFC 7540: section 9.1.2](https://tools.ietf.org/html/rfc7540#section-9.1.2)
 - [RFC 8297: section 2](https://tools.ietf.org/html/rfc8297#section-2)
 - [RFC 8470: section 7](https://tools.ietf.org/html/rfc8470#section-7)
+
+## PSR-17: [HTTP Factories](https://www.php-fig.org/psr/psr-17)
+
+The purpose of this PSR is to provide factory interfaces that define methods to create PSR-7 objects.
+
+### Why Bother?
+
+The current specification for PSR-7 allows for most objects to be modified by creating immutable copies. However, there are two notable exceptions:
+
+StreamInterface is a mutable object based on a resource that only allows the resource to be written to when the resource is writable.
+UploadedFileInterface is a read-only object based on a resource that offers no modification capabilities.
+The former is a significant pain point for PSR-7 middleware, as it can leave the response in an incomplete state.
+If the stream attached to the response body is not seekable or not writable,
+there is no way to recover from an error condition in which the body has already been written to.
+
+This scenario can be avoided by providing a factory to create new streams.
+Due to the lack of a formal standard for HTTP object factories,
+a developer must rely on a specific vendor implementation in order to create these objects.
+
+Another pain point is when writing re-usable middleware or request handlers.
+In such cases, package authors may need to create and return a response.
+However, creating discrete instances then ties the package to a specific PSR-7 implementation.
+If these packages rely on the request factory interface instead, they can remain agnostic of the PSR-7 implementation.
+
+Creating a formal standard for factories will allow developers to avoid dependencies on specific implementations while having the ability to create new objects when necessary.
+
+### Specification
+
+An HTTP factory is a method by which a new HTTP object, as defined by PSR-7, is created.
+HTTP factories MUST implement these interfaces for each object type that is provided by the package.
 
 ## PSR-18 . [HTTP Client](https://www.php-fig.org/psr/psr-18)
 
