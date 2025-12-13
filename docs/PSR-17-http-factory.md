@@ -1,7 +1,6 @@
-HTTP Factories
-==============
+# HTTP Factories
 
-This document describes a common standard for factories that create [PSR-7][psr7]
+This document describes a common standard for factories that create PSR-7
 compliant HTTP objects.
 
 PSR-7 did not include a recommendation on how to create HTTP objects, which leads
@@ -13,10 +12,10 @@ can be instantiated.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119][rfc2119].
+interpreted as described in RFC 2119.
 
-[psr7]: https://www.php-fig.org/psr/psr-7/
-[rfc2119]: https://tools.ietf.org/html/rfc2119
+- [PSR-07](https://www.php-fig.org/psr/psr-7) - HTTP Message Interface
+- [RFC 2119](https://tools.ietf.org/html/rfc2119) - Key words for use in RFCs to Indicate Requirement Levels
 
 ## 1. Specification
 
