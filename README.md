@@ -222,4 +222,4 @@ composer require rodas/psr-scaffold
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Marqitos/php-psr)
 
-[^1]:**[Implementation versions](VERSIONS.md)**
+[^1]:**[Implementation versions](/Marqitos/php-psr/blob/main/VERSIONS.md)**
