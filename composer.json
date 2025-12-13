@@ -15,6 +15,9 @@
             "email": "php@marcospor.to"
         }
     ],
+    "support": {
+        "source": "https://github.com/Marqitos/php-psr"
+    },    
     "minimum-stability": "stable",
     "require": {
         "php": ">=8.0.0",
