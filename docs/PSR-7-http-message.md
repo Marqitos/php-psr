@@ -52,10 +52,10 @@ interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
 
 ### References
 
-- [RFC 2119](https://tools.ietf.org/html/rfc2119)
-- [RFC 3986](https://tools.ietf.org/html/rfc3986)
-- [RFC 7230](https://tools.ietf.org/html/rfc7230)
-- [RFC 7231](https://tools.ietf.org/html/rfc7231)
+- [RFC 2119](https://tools.ietf.org/html/rfc2119) - Key words for use in RFCs to Indicate Requirement Levels
+- [RFC 3986](https://tools.ietf.org/html/rfc3986) - Uniform Resource Identifier (URI): Generic Syntax
+- [RFC 7230](https://tools.ietf.org/html/rfc7230) - Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing
+- [RFC 7231](https://tools.ietf.org/html/rfc7231) - Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content
 
 ## 1. Specification
 
@@ -600,7 +600,7 @@ operations will work regardless of environment. In particular:
 
 As examples:
 
-```
+```php
 // Move a file to an upload directory
 $filename = sprintf(
     '%s.%s',

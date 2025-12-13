@@ -31,15 +31,13 @@ These recommendations cover a wide variety of practices and conventions, from co
 
 ## PSR-03 . [Logger Interface](https://www.php-fig.org/psr/psr-18)
 
-### Basics
-
 - The LoggerInterface exposes eight methods to write logs to the eight RFC 5424 levels (`debug`, `info`, `notice`, `warning`, `error`, `critical`, `alert`, `emergency`).
 
-- A ninth method, log, accepts a log level as the first argument. Calling this method with one of the log level constants MUST have the same result as calling the level-specific method. Calling this method with a level not defined by this specification MUST throw a Psr\Log\InvalidArgumentException if the implementation does not know about the level. Users SHOULD NOT use a custom level without knowing for sure the current implementation supports it.
+- A ninth method, log, accepts a log level as the first argument. Calling this method with one of the log level constants MUST have the same result as calling the level-specific method. Calling this method with a level not defined by this specification MUST throw a `Psr\Log\InvalidArgumentException` if the implementation does not know about the level. Users SHOULD NOT use a custom level without knowing for sure the current implementation supports it.
 
 ### Message
 
-- Every method accepts a string as the message, or an object with a __toString() method. Implementors MAY have special handling for the passed objects. If that is not the case, implementors MUST cast it to a string.
+- Every method accepts a string as the message, or an object with a `__toString()` method. Implementors MAY have special handling for the passed objects. If that is not the case, implementors MUST cast it to a string.
 
 - The message MAY contain placeholders which implementors MAY replace with values from the context array.
 
@@ -48,33 +46,22 @@ These recommendations cover a wide variety of practices and conventions, from co
 - Every method accepts an array as context data. This is meant to hold any extraneous information that does not fit well in a string. The array can contain anything. Implementors MUST ensure they treat context data with as much lenience as possible. A given value in the context MUST NOT throw an exception nor raise any php error, warning or notice.
 - If an Exception object is passed in the context data, it MUST be in the 'exception' key. Logging exceptions is a common pattern and this allows implementors to extract a stack trace from the exception when the log backend supports it. Implementors MUST still verify that the 'exception' key is actually an Exception before using it as such, as it MAY contain anything.
 
-### References
-
-- [RFC 2119](https://tools.ietf.org/html/rfc2119)
-- [RFC 5424](https://tools.ietf.org/html/rfc5424)
-
 ## PSR-07 . [HTTP Message Interface](https://www.php-fig.org/psr/psr-7)
 
 HTTP messages are the foundation of web development. Web browsers and HTTP clients such as cURL create HTTP request messages that are sent to a web server, which provides an HTTP response message. Server-side code receives an HTTP request message, and returns an HTTP response message.
 
 HTTP messages are typically abstracted from the end-user consumer, but as developers, we typically need to know how they are structured and how to access or manipulate them in order to perform our tasks, whether that might be making a request to an HTTP API, or handling an incoming request.
 
-- [Interfaces](docs/PSR7-Interfaces.md)
-- [Usage](docs/PSR7-Usage.md)
-- [ChangeLog](psr_http-message_CHANGELOG.md)
-
-### References
-
-- [RFC 2119](https://tools.ietf.org/html/rfc2119)
-- [RFC 3986](https://tools.ietf.org/html/rfc3986)
-- [RFC 7230](https://tools.ietf.org/html/rfc7230)
-- [RFC 7231](https://tools.ietf.org/html/rfc7231)
+- [Interfaces](/Marqitos/php-psr/blob/main/docs/PSR7-Interfaces.md)
+- [Usage](/Marqitos/php-psr/blob/main/docs/PSR7-Usage.md)
+- [ChangeLog](/Marqitos/php-psr/blob/main/psr_http-message_CHANGELOG.md)
 
 ### Messages
 
 An HTTP message is either a request from a client to a server or a response from a server to a client. This specification defines interfaces for the HTTP messages `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` respectively.
 
-Both `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` extend `Psr\Http\Message\MessageInterface`. While `Psr\Http\Message\MessageInterface` MAY be implemented directly, implementors SHOULD implement `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface`.
+Both `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface` extend `Psr\Http\Message\MessageInterface`.
+While `Psr\Http\Message\MessageInterface` MAY be implemented directly, implementors SHOULD implement `Psr\Http\Message\RequestInterface` and `Psr\Http\Message\ResponseInterface`.
 
 ### PSR Http Message Util
 
@@ -93,23 +80,6 @@ Therefore, they are located in the same namespace and folder as the PSR-07 imple
 
 - `Fig\Http\Message\RequestMethodInterface.php` as `Psr\Http\Message\RequestMethodInterface.php`
 - `Fig\Http\Message\StatusCodeInterface.php` as `Psr\Http\Message\StatusCodeInterface.php`
-
-#### References
-
-- [RFC 2295: section 8.1](https://tools.ietf.org/html/rfc2295#section-8.1)
-- [RFC 2324: section 2.3](https://tools.ietf.org/html/rfc2324#section-2.3)
-- [RFC 2518: section 9.7](https://tools.ietf.org/html/rfc2518#section-9.7)
-- [RFC 2774: section 7](https://tools.ietf.org/html/rfc2774#section-7)
-- [RFC 3229: section 10.4](https://tools.ietf.org/html/rfc3229#section-10.4)
-- [RFC 4918: section 11](https://tools.ietf.org/html/rfc4918#section-11)
-- [RFC 5842: section 7.1](https://tools.ietf.org/html/rfc5842#section-7.1) & [section 7.2](https://tools.ietf.org/html/rfc5842#section-7.2)
-- [RFC 6585: section 3](https://tools.ietf.org/html/rfc6585#section-3), [section 4](https://tools.ietf.org/html/rfc6585#section-4), [section 5](https://tools.ietf.org/html/rfc6585#section-5) & [section 6](https://tools.ietf.org/html/rfc6585#section-6)
-- [RFC 7231: section 6](https://tools.ietf.org/html/rfc7231#section-6)
-- [RFC 7238: section 3](https://tools.ietf.org/html/rfc7238#section-3)
-- [RFC 7725: section 3](https://tools.ietf.org/html/rfc7725#section-3)
-- [RFC 7540: section 9.1.2](https://tools.ietf.org/html/rfc7540#section-9.1.2)
-- [RFC 8297: section 2](https://tools.ietf.org/html/rfc8297#section-2)
-- [RFC 8470: section 7](https://tools.ietf.org/html/rfc8470#section-7)
 
 ## PSR-17: [HTTP Factories](https://www.php-fig.org/psr/psr-17)
 
@@ -152,7 +122,6 @@ A second goal is that HTTP clients can be replaced as per the [Liskov substituti
 ### Definitions
 
 - **Client** - A Client is a library that implements this specification for the purposes of sending PSR-7-compatible HTTP Request messages and returning a PSR-7-compatible HTTP Response message to a Calling library.
-
 - **Calling Library** - A Calling Library is any code that makes use of a Client. It does not implement this specification's interfaces but consumes an object that implements them (a Client).
 
 ### Client
@@ -194,24 +163,62 @@ Creating a standard way of accessing the clock would allow interoperability duri
 ### Definitions
 
 - **Clock** - The clock is able to read the current time and date.
-
 - **Timestamp** - The current time as an integer number of seconds since Jan 1, 1970 00:00:00 UTC.
 
 ### Usage
 
-Get the current timestamp
+- **Get the current timestamp** - This should be done by using the `getTimestamp()` method on the returned `\DateTimeImmutable`:
 
-This should be done by using the `getTimestamp()` method on the returned `\DateTimeImmutable`:
+```php
+$timestamp = $clock->now()->getTimestamp();
+```
 
-`$timestamp = $clock->now()->getTimestamp();`
+## References
 
-### References
+- [RFC 2119](https://tools.ietf.org/html/rfc2119) - Key words for use in RFCs to Indicate Requirement Levels
 
-- [RFC 2119](https://tools.ietf.org/html/rfc2119)
+### PSR-03
+
+- [RFC 5424](https://tools.ietf.org/html/rfc5424) - The Syslog Protocol
+
+### PSR-07
+
+- [RFC 3986](https://tools.ietf.org/html/rfc3986) - Uniform Resource Identifier (URI): Generic Syntax
+- [RFC 7230](https://tools.ietf.org/html/rfc7230) - Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing
+- [RFC 7231](https://tools.ietf.org/html/rfc7231) - Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content
+
+#### Http Message Util
+
+- [RFC 2295: section 8.1](https://tools.ietf.org/html/rfc2295#section-8.1) - Transparent Content Negotiation in HTTP: 506 Variant Also Negotiates
+- [RFC 2324: section 2.3](https://tools.ietf.org/html/rfc2324#section-2.3) - Hyper Text Coffee Pot Control Protocol (HTCPCP/1.0): HTCPCP return codes
+- [RFC 2518: section 9.7](https://tools.ietf.org/html/rfc2518#section-9.7) - HTTP Extensions for Distributed Authoring - WEBDAV: Status-URI Response Header
+- [RFC 2774: section 7](https://tools.ietf.org/html/rfc2774#section-7) - An HTTP Extension Framework: 510 Not Extended
+- [RFC 3229: section 10.4](https://tools.ietf.org/html/rfc3229#section-10.4) - Delta encoding in HTTP: Status code specifications
+- [RFC 4918: section 11](https://tools.ietf.org/html/rfc4918#section-11) - HTTP Extensions for Web Distributed Authoring and Versioning (WebDAV): Status Code Extensions to HTTP/1.1
+- RFC 5842: Binding Extensions to Web Distributed Authoring and Versioning (WebDAV)
+  - [section 7.1](https://tools.ietf.org/html/rfc5842#section-7.1) - 208 Already Reported
+  - [section 7.2](https://tools.ietf.org/html/rfc5842#section-7.2) - 508 Loop Detected
+- RFC 6585: Additional HTTP Status Codes
+  - [section 3](https://tools.ietf.org/html/rfc6585#section-3) - 428 Precondition Required
+  - [section 4](https://tools.ietf.org/html/rfc6585#section-4) - 429 Too Many Requests
+  - [section 5](https://tools.ietf.org/html/rfc6585#section-5) - 431 Request Header Fields Too Large
+  - [section 6](https://tools.ietf.org/html/rfc6585#section-6) - 511 Network Authentication Required
+- [RFC 7231: section 6](https://tools.ietf.org/html/rfc7231#section-6) - Hypertext Transfer Protocol (HTTP/1.1) - Semantics and Content :Response Status Codes
+- [RFC 7238: section 3](https://tools.ietf.org/html/rfc7238#section-3) - The Hypertext Transfer Protocol Status Code 308 (Permanent Redirect): 308 Permanent Redirect
+- [RFC 7725: section 3](https://tools.ietf.org/html/rfc7725#section-3) - An HTTP Status Code to Report Legal Obstacles: 451 Unavailable For Legal Reasons
+- [RFC 7540: section 9.1.2](https://tools.ietf.org/html/rfc7540#section-9.1.2) - Hypertext Transfer Protocol Version 2 (HTTP/2): The 421 (Misdirected Request) Status Code
+- [RFC 8297: section 2](https://tools.ietf.org/html/rfc8297#section-2) - An HTTP Status Code for Indicating Hints: HTTP Status Code 103: Early Hints
+- [RFC 8470: section 7](https://tools.ietf.org/html/rfc8470#section-7) - Using Early Data in HTTP: IANA Considerations
 
 ---
 
 📦 Available at Packagist: [rodas/psr-scaffold](https://packagist.org/packages/rodas/psr-scaffold)
+
+```bash
+composer require rodas/psr-scaffold
+```
+
+---
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Marqitos/php-psr)
 
