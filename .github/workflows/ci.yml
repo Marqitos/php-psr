@@ -20,8 +20,7 @@ jobs:
       fail-fast: false
       matrix:
         php-version:
-          - "8.3" # Minimum supported PHP version by PHP Unit
-          - "8.4"
+          - "8.4" # Minimum supported PHP version
           - "8.5"
         operating-system:
           - "ubuntu-latest"
