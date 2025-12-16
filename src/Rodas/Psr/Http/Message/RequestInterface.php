@@ -1,20 +1,26 @@
 <?php
 /**
- * This file is part of the Psr\Http\Message library
+ * This file is part of the Rodas\Psr\Http\Message library
+ *
+ * Based on Http\Message\MessageInterface.php
+ * Psr\Http\Message from PHP Framework Interoperability Group
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @copyright 2014 PHP Framework Interoperability Group
- * @license https://opensource.org/license/MIT MIT
- * @link https://www.php-fig.org/psr/psr-7
+ * @package Rodas\Psr
+ * @subpackage psr-http-message
+ * @copyright 2025 Marcos Porto <php@marcospor.to>
+ * @license https://opensource.org/license/mit The MIT License
+ * @link https://marcospor.to/repositories/psr
  */
 
 declare(strict_types=1);
 
-namespace Psr\Http\Message;
+namespace Rodas\Psr\Http\Message;
 
 require_once __DIR__ . '/MessageInterface.php';
+require_once __DIR__ . '/RequestMethod.php';
 require_once __DIR__ . '/UriInterface.php';
 
 /**
@@ -38,7 +44,7 @@ require_once __DIR__ . '/UriInterface.php';
  */
 interface RequestInterface extends MessageInterface {
     /**
-     * Retrieves the message's request target.
+     * Gets the message's request target.
      *
      * Retrieves the message's request-target either as it will appear (for
      * clients), as it appeared at request (for servers), or as it was
@@ -51,9 +57,34 @@ interface RequestInterface extends MessageInterface {
      * If no URI is available, and no request-target has been specifically
      * provided, this method MUST return the string "/".
      *
-     * @return string
+     * @var string
      */
-    public function getRequestTarget(): string;
+    public string $requestTarget { get; }
+
+    /**
+     * Gets the HTTP method of the request.
+     *
+     * @var string Returns the request method.
+     */
+    public string $method { get; }
+
+    /**
+     * Gets the HTTP method of the request.
+     *
+     * @var RequestMethod|null Returns the request method.
+     */
+    public ?RequestMethod $requestMethod { get; }
+    
+    /**
+     * Gets the URI instance.
+     *
+     * This method MUST return a UriInterface instance.
+     *
+     * @link https://tools.ietf.org/html/rfc3986#section-4.3
+     * @var UriInterface Returns a UriInterface instance
+     *     representing the URI of the request.
+     */
+    public UriInterface $uri { get; }
 
     /**
      * Return an instance with the specific request-target.
@@ -74,14 +105,6 @@ interface RequestInterface extends MessageInterface {
      */
     public function withRequestTarget(string $requestTarget): RequestInterface;
 
-
-    /**
-     * Retrieves the HTTP method of the request.
-     *
-     * @return string Returns the request method.
-     */
-    public function getMethod(): string;
-
     /**
      * Return an instance with the provided HTTP method.
      *
@@ -98,17 +121,6 @@ interface RequestInterface extends MessageInterface {
      * @throws \InvalidArgumentException for invalid HTTP methods.
      */
     public function withMethod(string $method): RequestInterface;
-
-    /**
-     * Retrieves the URI instance.
-     *
-     * This method MUST return a UriInterface instance.
-     *
-     * @link https://tools.ietf.org/html/rfc3986#section-4.3
-     * @return UriInterface Returns a UriInterface instance
-     *     representing the URI of the request.
-     */
-    public function getUri(): UriInterface;
 
     /**
      * Returns an instance with the provided URI.

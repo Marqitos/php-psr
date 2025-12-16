@@ -15,7 +15,7 @@ declare(strict_types=1);
 namespace Rodas\Psr\Test\Http\Client;
 
 use PHPUnit\Framework\TestCase;
-use Psr\Test\Http\Message\RequireTest as MessageRequire;
+use Rodas\Psr\Test\Http\Message\RequireTest as MessageRequire;
 
 require_once __DIR__ . '/../Message/RequireTest.php';
 

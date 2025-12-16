@@ -1,18 +1,23 @@
 <?php
 /**
- * This file is part of the Psr\Http\Message library
+ * This file is part of the Rodas\Psr\Http\Message library
+ *
+ * Based on Http\Message\MessageInterface.php
+ * Psr\Http\Message from PHP Framework Interoperability Group
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @copyright 2014 PHP Framework Interoperability Group
- * @license https://opensource.org/license/MIT MIT
- * @link https://www.php-fig.org/psr/psr-7
+ * @package Rodas\Psr
+ * @subpackage psr-http-message
+ * @copyright 2025 Marcos Porto <php@marcospor.to>
+ * @license https://opensource.org/license/mit The MIT License
+ * @link https://marcospor.to/repositories/psr
  */
 
 declare(strict_types=1);
 
-namespace Psr\Http\Message;
+namespace Rodas\Psr\Http\Message;
 
 require_once __DIR__ . '/StreamInterface.php';
 
@@ -30,13 +35,47 @@ require_once __DIR__ . '/StreamInterface.php';
   */
 interface MessageInterface {
     /**
-     * Retrieves the HTTP protocol version as a string.
+     * Gets the HTTP protocol version as a string.
      *
      * The string MUST contain only the HTTP version number (e.g., "1.1", "1.0").
      *
-     * @return string HTTP protocol version.
+     * @var string HTTP protocol version.
      */
-    public function getProtocolVersion(): string;
+    public string $protocolVersion { get; }
+
+    /**
+     * Gets all message header values.
+     *
+     * The keys represent the header name as it will be sent over the wire, and
+     * each value is an array of strings associated with the header.
+     *
+     *     // Represent the headers as a string
+     *     foreach ($message->headers() as $name => $values) {
+     *         echo $name . ": " . implode(", ", $values);
+     *     }
+     *
+     *     // Emit headers iteratively:
+     *     foreach ($message->headers() as $name => $values) {
+     *         foreach ($values as $value) {
+     *             header(sprintf('%s: %s', $name, $value), false);
+     *         }
+     *     }
+     *
+     * While header names are not case-sensitive, $headers will preserve the
+     * exact case in which headers were originally specified.
+     *
+     * @var string[][] Returns an associative array of the message's headers. Each
+     *     key MUST be a header name, and each value MUST be an array of strings
+     *     for that header.
+     */
+    public array $headers { get; }
+
+    /**
+     * Gets the body of the message.
+     *
+     * @var StreamInterface Returns the body as a stream.
+     */
+    public StreamInterface $body { get; }
 
     /**
      * Return an instance with the specified HTTP protocol version.
@@ -52,33 +91,6 @@ interface MessageInterface {
      * @return static
      */
     public function withProtocolVersion(string $version): MessageInterface;
-
-    /**
-     * Retrieves all message header values.
-     *
-     * The keys represent the header name as it will be sent over the wire, and
-     * each value is an array of strings associated with the header.
-     *
-     *     // Represent the headers as a string
-     *     foreach ($message->getHeaders() as $name => $values) {
-     *         echo $name . ": " . implode(", ", $values);
-     *     }
-     *
-     *     // Emit headers iteratively:
-     *     foreach ($message->getHeaders() as $name => $values) {
-     *         foreach ($values as $value) {
-     *             header(sprintf('%s: %s', $name, $value), false);
-     *         }
-     *     }
-     *
-     * While header names are not case-sensitive, getHeaders() will preserve the
-     * exact case in which headers were originally specified.
-     *
-     * @return string[][] Returns an associative array of the message's headers. Each
-     *     key MUST be a header name, and each value MUST be an array of strings
-     *     for that header.
-     */
-    public function getHeaders(): array;
 
     /**
      * Checks if a header exists by the given case-insensitive name.
@@ -175,13 +187,6 @@ interface MessageInterface {
      * @return static
      */
     public function withoutHeader(string $name): MessageInterface;
-
-    /**
-     * Gets the body of the message.
-     *
-     * @return StreamInterface Returns the body as a stream.
-     */
-    public function getBody(): StreamInterface;
 
     /**
      * Return an instance with the specified message body.

@@ -1,18 +1,25 @@
 <?php
 /**
- * This file is part of the Psr\Http\Message library
+ * This file is part of the Rodas\Psr\Http\Message library
+ *
+ * Based on Http\Message\StreamInterface.php
+ * Psr\Http\Message from PHP Framework Interoperability Group
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @copyright 2014 PHP Framework Interoperability Group
- * @license https://opensource.org/license/MIT MIT
- * @link https://www.php-fig.org/psr/psr-7
+ * @package Rodas\Psr
+ * @subpackage psr-http-message
+ * @copyright 2025 Marcos Porto <php@marcospor.to>
+ * @license https://opensource.org/license/mit The MIT License
+ * @link https://marcospor.to/repositories/psr
  */
 
 declare(strict_types=1);
 
-namespace Psr\Http\Message;
+namespace Rodas\Psr\Http\Message;
+
+use Stringable;
 
 /**
  * Describes a data stream.
@@ -21,22 +28,34 @@ namespace Psr\Http\Message;
  * a wrapper around the most common operations, including serialization of
  * the entire stream to a string.
  */
-interface StreamInterface {
+interface StreamInterface extends Stringable {
     /**
-     * Reads all data from the stream into a string, from the beginning to end.
+     * Gets whether or not the stream is readable.
      *
-     * This method MUST attempt to seek to the beginning of the stream before
-     * reading data and read the stream until the end is reached.
-     *
-     * Warning: This could attempt to load a large amount of data into memory.
-     *
-     * This method MUST NOT raise an exception in order to conform with PHP's
-     * string casting operations.
-     *
-     * @see https://php.net/manual/en/language.oop5.magic.php#object.tostring
-     * @return string
+     * @var bool
      */
-    public function __toString(): string;
+    public bool $isReadable { get; }
+
+    /**
+     * Gets whether or not the stream is seekable.
+     *
+     * @var bool
+     */
+    public bool $isSeekable { get; }
+
+    /**
+     * Gets whether or not the stream is writable.
+     *
+     * @var bool
+     */
+    public bool $isWritable { get; }
+
+    /**
+     * Get the size of the stream if known.
+     *
+     * @var ?int Returns the size in bytes if known, or null if unknown.
+     */
+    public ?int $size { get; }
 
     /**
      * Closes the stream and any underlying resources.
@@ -55,13 +74,6 @@ interface StreamInterface {
     public function detach();
 
     /**
-     * Get the size of the stream if known.
-     *
-     * @return ?int Returns the size in bytes if known, or null if unknown.
-     */
-    public function getSize(): ?int;
-
-    /**
      * Returns the current position of the file read/write pointer
      *
      * @return int Position of the file pointer
@@ -76,12 +88,6 @@ interface StreamInterface {
      */
     public function eof(): bool;
 
-    /**
-     * Returns whether or not the stream is seekable.
-     *
-     * @return bool
-     */
-    public function isSeekable(): bool;
 
     /**
      * Seek to a position in the stream.
@@ -110,13 +116,6 @@ interface StreamInterface {
     public function rewind(): void;
 
     /**
-     * Returns whether or not the stream is writable.
-     *
-     * @return bool
-     */
-    public function isWritable(): bool;
-
-    /**
      * Write data to the stream.
      *
      * @param string $string The string that is to be written.
@@ -124,13 +123,6 @@ interface StreamInterface {
      * @throws \RuntimeException on failure.
      */
     public function write(string $string): int;
-
-    /**
-     * Returns whether or not the stream is readable.
-     *
-     * @return bool
-     */
-    public function isReadable(): bool;
 
     /**
      * Read data from the stream.

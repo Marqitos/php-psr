@@ -12,7 +12,7 @@
 
 declare(strict_types=1);
 
-namespace Psr\Test\Http\Message;
+namespace Rodas\Psr\Test\Http\Message;
 
 use PHPUnit\Framework\TestCase;
 
@@ -25,11 +25,11 @@ require_once __DIR__ . '/RequireTest.php';
  */
 class FactoryRequireTest extends TestCase {
 
-    public const REQUEST_FACTORY_INTERFACE          = 'Psr\Http\Message\RequestFactoryInterface';
-    public const RESPONSE_FACTORY_INTERFACE         = 'Psr\Http\Message\ResponseFactoryInterface';
-    public const SERVER_REQUEST_FACTORY_INTERFACE   = 'Psr\Http\Message\ServerRequestFactoryInterface';
-    public const STREAM_FACTORY_INTERFACE           = 'Psr\Http\Message\StreamFactoryInterface';
-    public const UPLOADED_FILE_FACTORY_INTERFACE    = 'Psr\Http\Message\UploadedFileFactoryInterface';
+    public const REQUEST_FACTORY_INTERFACE          = 'Rodas\Psr\Http\Message\RequestFactoryInterface';
+    public const RESPONSE_FACTORY_INTERFACE         = 'Rodas\Psr\Http\Message\ResponseFactoryInterface';
+    public const SERVER_REQUEST_FACTORY_INTERFACE   = 'Rodas\Psr\Http\Message\ServerRequestFactoryInterface';
+    public const STREAM_FACTORY_INTERFACE           = 'Rodas\Psr\Http\Message\StreamFactoryInterface';
+    public const UPLOADED_FILE_FACTORY_INTERFACE    = 'Rodas\Psr\Http\Message\UploadedFileFactoryInterface';
 
     /**
      * Test RequestFactoryInterface inheritance

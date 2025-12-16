@@ -12,7 +12,7 @@
 
 declare(strict_types=1);
 
-namespace Psr\Test\Http\Message;
+namespace Rodas\Psr\Test\Http\Message;
 
 use PHPUnit\Framework\TestCase;
 
@@ -23,13 +23,13 @@ use PHPUnit\Framework\TestCase;
  */
 class RequireTest extends TestCase {
 
-    public const MESSAGE_INTERFACE          = 'Psr\Http\Message\MessageInterface';
-    public const REQUEST_INTERFACE          = 'Psr\Http\Message\RequestInterface';
-    public const RESPONSE_INTERFACE         = 'Psr\Http\Message\ResponseInterface';
-    public const SERVER_REQUEST_INTERFACE   = 'Psr\Http\Message\ServerRequestInterface';
-    public const STREAM_INTERFACE           = 'Psr\Http\Message\StreamInterface';
-    public const UPLOADED_FILE_INTERFACE    = 'Psr\Http\Message\UploadedFileInterface';
-    public const URI_INTERFACE              = 'Psr\Http\Message\UriInterface';
+    public const MESSAGE_INTERFACE          = 'Rodas\Psr\Http\Message\MessageInterface';
+    public const REQUEST_INTERFACE          = 'Rodas\Psr\Http\Message\RequestInterface';
+    public const RESPONSE_INTERFACE         = 'Rodas\Psr\Http\Message\ResponseInterface';
+    public const SERVER_REQUEST_INTERFACE   = 'Rodas\Psr\Http\Message\ServerRequestInterface';
+    public const STREAM_INTERFACE           = 'Rodas\Psr\Http\Message\StreamInterface';
+    public const UPLOADED_FILE_INTERFACE    = 'Rodas\Psr\Http\Message\UploadedFileInterface';
+    public const URI_INTERFACE              = 'Rodas\Psr\Http\Message\UriInterface';
 
     /**
      * Test MessageInterface inheritance

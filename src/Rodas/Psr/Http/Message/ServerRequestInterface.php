@@ -1,20 +1,25 @@
 <?php
 /**
- * This file is part of the Psr\Http\Message library
+ * This file is part of the Rodas\Psr\Http\Message library
+ *
+ * Based on Http\Message\ServerRequestInterface.php
+ * Psr\Http\Message from PHP Framework Interoperability Group
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @copyright 2014 PHP Framework Interoperability Group
- * @license https://opensource.org/license/MIT MIT
- * @link https://www.php-fig.org/psr/psr-7
+ * @package Rodas\Psr
+ * @subpackage psr-http-message
+ * @copyright 2025 Marcos Porto <php@marcospor.to>
+ * @license https://opensource.org/license/mit The MIT License
+ * @link https://marcospor.to/repositories/psr
  */
 
 declare(strict_types=1);
 
-namespace Psr\Http\Message;
+namespace Rodas\Psr\Http\Message;
 
-use Psr\Http\Message\RequestInterface;
+use Rodas\Psr\Http\Message\RequestInterface;
 
 require_once __DIR__ . '/RequestInterface.php';
 
@@ -58,18 +63,18 @@ require_once __DIR__ . '/RequestInterface.php';
  */
 interface ServerRequestInterface extends RequestInterface {
     /**
-     * Retrieve server parameters.
+     * Get server parameters.
      *
      * Retrieves data related to the incoming request environment,
      * typically derived from PHP's $_SERVER superglobal. The data IS NOT
      * REQUIRED to originate from $_SERVER.
      *
-     * @return array<string>
+     * @var array<string>
      */
-    public function getServerParams(): array;
+    public array $serverParams { get; }
 
     /**
-     * Retrieve cookies.
+     * Get cookies.
      *
      * Retrieves cookies sent by the client to the server.
      *
@@ -78,7 +83,48 @@ interface ServerRequestInterface extends RequestInterface {
      *
      * @return array<string,string>
      */
-    public function getCookieParams(): array;
+    public array $cookieParams { get; }
+
+    /**
+     * Get query string arguments.
+     *
+     * Retrieves the deserialized query string arguments, if any.
+     *
+     * Note: the query params might not be in sync with the URI or server
+     * params. If you need to ensure you are only getting the original
+     * values, you may need to parse the query string from `getUri()->getQuery()`
+     * or from the `QUERY_STRING` server param.
+     *
+     * @var array<string,mixed>
+     */
+    public array $queryParams { get; }
+
+    /**
+     * Get normalized file upload data.
+     *
+     * This method returns upload metadata in a normalized tree, with each leaf
+     * an instance of Psr\Http\Message\UploadedFileInterface.
+     *
+     * These values MAY be prepared from $_FILES or the message body during
+     * instantiation, or MAY be injected via withUploadedFiles().
+     *
+     * @var array<UploadedFileInterface> An array tree of UploadedFileInterface instances; an empty
+     *     array MUST be returned if no data is present.
+     */
+    public array $uploadedFiles { get; }
+
+    /**
+     * Get attributes derived from the request.
+     *
+     * The request "attributes" may be used to allow injection of any
+     * parameters derived from the request: e.g., the results of path
+     * match operations; the results of decrypting cookies; the results of
+     * deserializing non-form-encoded message bodies; etc. Attributes
+     * will be application and request specific, and CAN be mutable.
+     *
+     * @var array<string,mixed> Attributes derived from the request.
+     */
+    public array $attributes { get; }
 
     /**
      * Return an instance with the specified cookies.
@@ -98,20 +144,6 @@ interface ServerRequestInterface extends RequestInterface {
      * @return static
      */
     public function withCookieParams(array $cookies): ServerRequestInterface;
-
-    /**
-     * Retrieve query string arguments.
-     *
-     * Retrieves the deserialized query string arguments, if any.
-     *
-     * Note: the query params might not be in sync with the URI or server
-     * params. If you need to ensure you are only getting the original
-     * values, you may need to parse the query string from `getUri()->getQuery()`
-     * or from the `QUERY_STRING` server param.
-     *
-     * @return array<string,mixed>
-     */
-    public function getQueryParams(): array;
 
     /**
      * Return an instance with the specified query string arguments.
@@ -136,20 +168,6 @@ interface ServerRequestInterface extends RequestInterface {
      * @return static
      */
     public function withQueryParams(array $query): ServerRequestInterface;
-
-    /**
-     * Retrieve normalized file upload data.
-     *
-     * This method returns upload metadata in a normalized tree, with each leaf
-     * an instance of Psr\Http\Message\UploadedFileInterface.
-     *
-     * These values MAY be prepared from $_FILES or the message body during
-     * instantiation, or MAY be injected via withUploadedFiles().
-     *
-     * @return array<UploadedFileInterface> An array tree of UploadedFileInterface instances; an empty
-     *     array MUST be returned if no data is present.
-     */
-    public function getUploadedFiles(): array;
 
     /**
      * Create a new instance with the specified uploaded files.
@@ -210,19 +228,6 @@ interface ServerRequestInterface extends RequestInterface {
      *     provided.
      */
     public function withParsedBody($data): ServerRequestInterface;
-
-    /**
-     * Retrieve attributes derived from the request.
-     *
-     * The request "attributes" may be used to allow injection of any
-     * parameters derived from the request: e.g., the results of path
-     * match operations; the results of decrypting cookies; the results of
-     * deserializing non-form-encoded message bodies; etc. Attributes
-     * will be application and request specific, and CAN be mutable.
-     *
-     * @return array<string,mixed> Attributes derived from the request.
-     */
-    public function getAttributes(): array;
 
     /**
      * Retrieve a single derived request attribute.

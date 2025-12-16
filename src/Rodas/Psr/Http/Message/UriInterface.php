@@ -1,18 +1,25 @@
 <?php
 /**
- * This file is part of the Psr\Http\Message library
+ * This file is part of the Rodas\Psr\Http\Message library
+ *
+ * Based on Http\Message\UriInterface.php
+ * Psr\Http\Message from PHP Framework Interoperability Group
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @copyright 2014 PHP Framework Interoperability Group
- * @license https://opensource.org/license/MIT MIT
- * @link https://www.php-fig.org/psr/psr-7
+ * @package Rodas\Psr
+ * @subpackage psr-http-message
+ * @copyright 2025 Marcos Porto <php@marcospor.to>
+ * @license https://opensource.org/license/mit The MIT License
+ * @link https://marcospor.to/repositories/psr
  */
 
 declare(strict_types=1);
 
-namespace Psr\Http\Message;
+namespace Rodas\Psr\Http\Message;
+
+use Stringable;
 
 /**
  * Value object representing a URI.
@@ -34,9 +41,9 @@ namespace Psr\Http\Message;
  *
  * @link https://tools.ietf.org/html/rfc3986 (the URI specification)
  */
-interface UriInterface {
+interface UriInterface extends Stringable {
     /**
-     * Retrieve the scheme component of the URI.
+     * Get the scheme component of the URI.
      *
      * If no scheme is present, this method MUST return an empty string.
      *
@@ -47,12 +54,12 @@ interface UriInterface {
      * added.
      *
      * @see https://tools.ietf.org/html/rfc3986#section-3.1
-     * @return string The URI scheme.
+     * @var string The URI scheme.
      */
-    public function getScheme(): string;
+    public string $scheme { get; }
 
     /**
-     * Retrieve the authority component of the URI.
+     * Get the authority component of the URI.
      *
      * If no authority information is present, this method MUST return an empty
      * string.
@@ -67,12 +74,12 @@ interface UriInterface {
      * scheme, it SHOULD NOT be included.
      *
      * @see https://tools.ietf.org/html/rfc3986#section-3.2
-     * @return string The URI authority, in "[user-info@]host[:port]" format.
+     * @var string The URI authority, in "[user-info@]host[:port]" format.
      */
-    public function getAuthority(): string;
+    public string $authority { get; }
 
     /**
-     * Retrieve the user information component of the URI.
+     * Get the user information component of the URI.
      *
      * If no user information is present, this method MUST return an empty
      * string.
@@ -84,12 +91,12 @@ interface UriInterface {
      * The trailing "@" character is not part of the user information and MUST
      * NOT be added.
      *
-     * @return string The URI user information, in "username[:password]" format.
+     * @var string The URI user information, in "username[:password]" format.
      */
-    public function getUserInfo(): string;
+    public string $userInfo { get; }
 
     /**
-     * Retrieve the host component of the URI.
+     * Get the host component of the URI.
      *
      * If no host is present, this method MUST return an empty string.
      *
@@ -97,12 +104,12 @@ interface UriInterface {
      * Section 3.2.2.
      *
      * @see https://tools.ietf.org/html/rfc3986#section-3.2.2
-     * @return string The URI host.
+     * @var string The URI host.
      */
-    public function getHost(): string;
+    public string $host { get; }
 
     /**
-     * Retrieve the port component of the URI.
+     * Get the port component of the URI.
      *
      * If a port is present, and it is non-standard for the current scheme,
      * this method MUST return it as an integer. If the port is the standard port
@@ -114,12 +121,12 @@ interface UriInterface {
      * If no port is present, but a scheme is present, this method MAY return
      * the standard port for that scheme, but SHOULD return null.
      *
-     * @return int|null The URI port.
+     * @var int|null The URI port.
      */
-    public function getPort(): ?int;
+    public ?int $port { get; }
 
     /**
-     * Retrieve the path component of the URI.
+     * Get the path component of the URI.
      *
      * The path can either be empty or absolute (starting with a slash) or
      * rootless (not starting with a slash). Implementations MUST support all
@@ -141,12 +148,12 @@ interface UriInterface {
      *
      * @see https://tools.ietf.org/html/rfc3986#section-2
      * @see https://tools.ietf.org/html/rfc3986#section-3.3
-     * @return string The URI path.
+     * @var string The URI path.
      */
-    public function getPath(): string;
+    public string $path { get; }
 
     /**
-     * Retrieve the query string of the URI.
+     * Get the query string of the URI.
      *
      * If no query string is present, this method MUST return an empty string.
      *
@@ -163,12 +170,12 @@ interface UriInterface {
      *
      * @see https://tools.ietf.org/html/rfc3986#section-2
      * @see https://tools.ietf.org/html/rfc3986#section-3.4
-     * @return string The URI query string.
+     * @var string The URI query string.
      */
-    public function getQuery(): string;
+    public string $query { get; }
 
     /**
-     * Retrieve the fragment component of the URI.
+     * Get the fragment component of the URI.
      *
      * If no fragment is present, this method MUST return an empty string.
      *
@@ -181,9 +188,9 @@ interface UriInterface {
      *
      * @see https://tools.ietf.org/html/rfc3986#section-2
      * @see https://tools.ietf.org/html/rfc3986#section-3.5
-     * @return string The URI fragment.
+     * @var string The URI fragment.
      */
-    public function getFragment(): string;
+    public string $fragment { get; }
 
     /**
      * Return an instance with the specified scheme.
@@ -307,29 +314,4 @@ interface UriInterface {
      * @return static A new instance with the specified fragment.
      */
     public function withFragment(string $fragment): UriInterface;
-
-    /**
-     * Return the string representation as a URI reference.
-     *
-     * Depending on which components of the URI are present, the resulting
-     * string is either a full URI or relative reference according to RFC 3986,
-     * Section 4.1. The method concatenates the various components of the URI,
-     * using the appropriate delimiters:
-     *
-     * - If a scheme is present, it MUST be suffixed by ":".
-     * - If an authority is present, it MUST be prefixed by "//".
-     * - The path can be concatenated without delimiters. But there are two
-     *   cases where the path has to be adjusted to make the URI reference
-     *   valid as PHP does not allow to throw an exception in __toString():
-     *     - If the path is rootless and an authority is present, the path MUST
-     *       be prefixed by "/".
-     *     - If the path is starting with more than one "/" and no authority is
-     *       present, the starting slashes MUST be reduced to one.
-     * - If a query is present, it MUST be prefixed by "?".
-     * - If a fragment is present, it MUST be prefixed by "#".
-     *
-     * @see https://tools.ietf.org/html/rfc3986#section-4.1
-     * @return string
-     */
-    public function __toString(): string;
 }

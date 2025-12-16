@@ -1,2 +1,2 @@
-Commit: 879f606
+Commit: 72823e1
 Version: 2.0.0
