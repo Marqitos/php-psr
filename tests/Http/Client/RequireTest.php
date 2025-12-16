@@ -12,7 +12,7 @@
 
 declare(strict_types=1);
 
-namespace Psr\Test\Http\Client;
+namespace Rodas\Psr\Test\Http\Client;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Test\Http\Message\RequireTest as MessageRequire;
@@ -26,10 +26,10 @@ require_once __DIR__ . '/../Message/RequireTest.php';
  */
 class RequireTest extends TestCase {
 
-    public const CLIENT_INTERFACE           = 'Psr\Http\Client\ClientInterface';
-    public const CLIENT_EXCEPTION_INTERFACE = 'Psr\Http\Client\ClientExceptionInterface';
-    public const NETWORK_EXCEPTION_INTERFACE= 'Psr\Http\Client\NetworkExceptionInterface';
-    public const REQUEST_EXCEPTION_INTERFACE= 'Psr\Http\Client\RequestExceptionInterface';
+    public const CLIENT_INTERFACE           = 'Rodas\Psr\Http\Client\ClientInterface';
+    public const CLIENT_EXCEPTION_INTERFACE = 'Rodas\Psr\Http\Client\ClientExceptionInterface';
+    public const NETWORK_EXCEPTION_INTERFACE= 'Rodas\Psr\Http\Client\NetworkExceptionInterface';
+    public const REQUEST_EXCEPTION_INTERFACE= 'Rodas\Psr\Http\Client\RequestExceptionInterface';
 
     /**
      * Test ClientInterface inheritance

@@ -1,21 +1,26 @@
 <?php
 /**
- * This file is part of the Psr\Http\Client library
+ * This file is part of the Rodas\Psr\Http\Client library
+ *
+ * Based on Http\Client\ClientInterface.php
+ * Psr\Http\Client from PHP Framework Interoperability Group
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @copyright 2017 PHP Framework Interoperability Group
- * @license https://opensource.org/license/MIT MIT
- * @link https://www.php-fig.org/psr/psr-18
+ * @package Rodas\Psr
+ * @subpackage psr-http-client
+ * @copyright 2025 Marcos Porto <php@marcospor.to>
+ * @license https://opensource.org/license/mit The MIT License
+ * @link https://marcospor.to/repositories/system
  */
 
 declare(strict_types=1);
 
-namespace Psr\Http\Client;
+namespace Rodas\Psr\Http\Client;
 
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
+use Rodas\Psr\Http\Message\RequestInterface;
+use Rodas\Psr\Http\Message\ResponseInterface;
 
 require_once __DIR__ . '/../Message/RequestInterface.php';
 require_once __DIR__ . '/../Message/ResponseInterface.php';
