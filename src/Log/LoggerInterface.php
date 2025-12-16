@@ -120,6 +120,7 @@ interface LoggerInterface {
      * @param LogLevel            $level   Log level.
      * @param string|Stringable   $message Message to save in the log record.
      * @param array<string,mixed> $context Additional log data.
+     * @return void                        Void return
      */
     public function log(LogLevel $level, string | Stringable $message, array $context = []): void;
 }

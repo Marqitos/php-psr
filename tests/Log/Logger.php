@@ -12,49 +12,29 @@
 
 declare(strict_types=1);
 
-namespace Psr\Test\Log;
+namespace Rodas\Psr\Test\Log;
 
-use Psr\Log\AbstractLogger;
-use Psr\Log\InvalidArgumentException;
-use Psr\Log\LogLevel;
+use Rodas\Psr\Log\AbstractLogger;
+use Rodas\Psr\Log\LogLevel;
 use Stringable;
 
 class Logger extends AbstractLogger {
 
-    public string $level;
+    public LogLevel $level;
     public string $message;
 
 # LoggerTrait members
 
     /**
-      * Logs with an arbitrary level.
-      *
-      * @param mixed               $level   Log level, MUST be a LogLevel constant.
-      * @param string|Stringable   $message Message to save in the log record.
-      * @param array<string,mixed> $context Aditional log data.
-      *
-      * @return void                        Void return
-      *
-      * @throws InvalidArgumentException    If log level is not a valid LogLevel constant.
-      */
-    public function log(mixed $level, string | Stringable $message, array $context = []): void {
-        // Validate log level
-        switch ($level) {
-            case LogLevel::EMERGENCY:
-            case LogLevel::ALERT:
-            case LogLevel::CRITICAL:
-            case LogLevel::ERROR:
-            case LogLevel::WARNING:
-            case LogLevel::NOTICE:
-            case LogLevel::INFO:
-            case LogLevel::DEBUG:
-                $this->level = $level;
-                break;
-            default:
-                throw new InvalidArgumentException('Invalid log level');
-        }
-
-        $this->level = (string) $level;
+     * Logs with an arbitrary level.
+     *
+     * @param LogLevel            $level   Log level.
+     * @param string|Stringable   $message Message to save in the log record.
+     * @param array<string,mixed> $context Additional log data.
+     * @return void                        Void return
+     */
+    public function log(LogLevel $level, string | Stringable $message, array $context = []): void {
+        $this->level = $level;
         $this->message = self::interpolate((string) $message, $context);
     }
 

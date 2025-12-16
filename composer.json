@@ -42,12 +42,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Psr\\": "src/"
+            "Rodas\\Psr\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Psr\\Tests\\": "tests/"
+            "Rodas\\Psr\\Tests\\": "tests/"
         }
     },    
     "config": {

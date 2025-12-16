@@ -12,28 +12,28 @@
 
 declare(strict_types=1);
 
-namespace Psr\Test\Log;
+namespace Rodas\Psr\Test\Log;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * Require test class for Psr\Log
+ * Require test class for Rodas\Psr\Log
  *
- * Verify that all Psr\Log 'require' statements work correctly
+ * Verify that all Rodas\Psr\Log 'require' statements work correctly
  */
 class RequireTest extends TestCase {
 
-    public const ABSTRACT_LOGGER    = 'Psr\Log\AbstractLogger';
-    public const LOG_LEVEL          = 'Psr\Log\LogLevel';
-    public const LOGGER_INTERFACE   = 'Psr\Log\LoggerInterface';
-    public const LOGGER_TRAIT       = 'Psr\Log\LoggerTrait';
+    public const ABSTRACT_LOGGER    = 'Rodas\Psr\Log\AbstractLogger';
+    public const LOG_LEVEL          = 'Rodas\Psr\Log\LogLevel';
+    public const LOGGER_INTERFACE   = 'Rodas\Psr\Log\LoggerInterface';
+    public const LOGGER_TRAIT       = 'Rodas\Psr\Log\LoggerTrait';
 
     /**
      * Test AbstractLogger inheritance
      *
      * @return void
      *
-     * @covers Psr\Log\AbstractLogger
+     * @covers Rodas\Psr\Log\AbstractLogger
      */
     public function testAbstractLogger(): void {
         // Not necessary loaded
@@ -67,14 +67,14 @@ class RequireTest extends TestCase {
      *
      * @return void
      *
-     * @covers Psr\Log\LoggerAwareInterface
+     * @covers Rodas\Psr\Log\LoggerAwareInterface
      */
     public function testLoggerAwareInterface(): void {
         // Not necessary loaded
         // LoggerAwareInterface depends LoggerInterface
         $existsLoggerInterface = interface_exists(self::LOGGER_INTERFACE, false);
         if (!$existsLoggerInterface) {
-            class_exists('Psr\Log\LoggerAwareInterface');
+            class_exists('Rodas\Psr\Log\LoggerAwareInterface');
             // LoggerInterface must be loaded
             // LoggerAwareInterface depends LoggerInterface
             $existsLoggerInterface = interface_exists(self::LOGGER_INTERFACE, false);
@@ -94,7 +94,7 @@ class RequireTest extends TestCase {
         // LoggerAwareTrait depends LoggerInterface
         $existsLoggerInterface = interface_exists(self::LOGGER_INTERFACE, false);
         if (!$existsLoggerInterface) {
-            class_exists('Psr\Log\LoggerAwareTrait');
+            class_exists('Rodas\Psr\Log\LoggerAwareTrait');
             // LoggerInterface must be loaded
             // LoggerAwareTrait depends LoggerInterface
             $existsLoggerInterface = interface_exists(self::LOGGER_INTERFACE, false);
@@ -144,7 +144,7 @@ class RequireTest extends TestCase {
             $existsLoggerTrait &&
             $existsLogLevel;
         if (!$allLoad) {
-            class_exists('Psr\Log\NullLogger');
+            class_exists('Rodas\Psr\Log\NullLogger');
             // All must be loaded
             // NullLogger extends AbstractLogger
             $existsAbstractLogger = class_exists(self::ABSTRACT_LOGGER, false);

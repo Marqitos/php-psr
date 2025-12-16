@@ -15,8 +15,8 @@ declare(strict_types=1);
 namespace Psr\Test\Log;
 
 use PHPUnit\Framework\TestCase;
-use Psr\Log\LogLevel;
-use Psr\Log\NullLogger;
+use Rodas\Psr\Log\LogLevel;
+use Rodas\Psr\Log\NullLogger;
 
 /**
  * Test class for NullLogger
