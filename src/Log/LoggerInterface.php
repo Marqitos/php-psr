@@ -1,20 +1,27 @@
 <?php
 /**
- * This file is part of the Psr\Log library
+ * This file is part of the Rodas\Psr library
+ *
+ * Based on Log\LoggerInterface.php
+ * Psr\Log from PHP Framework Interoperability Group
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @copyright 2012 PHP Framework Interoperability Group
- * @license https://opensource.org/license/MIT MIT
- * @link https://www.php-fig.org/psr/psr-3
+ * @package Rodas\Psr
+ * @subpackage psr-log
+ * @copyright 2025 Marcos Porto <php@marcospor.to>
+ * @license https://opensource.org/license/mit The MIT License
+ * @link https://marcospor.to/repositories/system
  */
 
 declare(strict_types=1);
 
-namespace Psr\Log;
+namespace Rodas\Psr\Log;
 
 use Stringable;
+
+require_once __DIR__ . '/LogLevel.php';
 
 /**
   * Describes a logger instance.
@@ -33,79 +40,86 @@ use Stringable;
   */
 interface LoggerInterface {
     /**
-      * System is unusable.
-      *
-      * @param mixed[] $context
-      */
+     * System is unusable.
+     *
+     * @param string|Stringable   $message Message to save in the log record.
+     * @param array<string,mixed> $context Additional log data.
+     */
     public function emergency(string | Stringable $message, array $context = []): void;
 
     /**
-      * Action must be taken immediately.
-      *
-      * Example: Entire website down, database unavailable, etc. This should
-      * trigger the SMS alerts and wake you up.
-      *
-      * @param mixed[] $context
-      */
+     * Action must be taken immediately.
+     *
+     * Example: Entire website down, database unavailable, etc. This should
+     * trigger the SMS alerts and wake you up.
+     *
+     * @param string|Stringable   $message Message to save in the log record.
+     * @param array<string,mixed> $context Additional log data.
+     */
     public function alert(string | Stringable $message, array $context = []): void;
 
     /**
-      * Critical conditions.
-      *
-      * Example: Application component unavailable, unexpected exception.
-      *
-      * @param mixed[] $context
-      */
+     * Critical conditions.
+     *
+     * Example: Application component unavailable, unexpected exception.
+     *
+     * @param string|Stringable   $message Message to save in the log record.
+     * @param array<string,mixed> $context Additional log data.
+     */
     public function critical(string | Stringable $message, array $context = []): void;
 
     /**
-      * Runtime errors that do not require immediate action but should typically
-      * be logged and monitored.
-      *
-      * @param mixed[] $context
-      */
+     * Runtime errors that do not require immediate action but should typically
+     * be logged and monitored.
+     *
+     * @param string|Stringable   $message Message to save in the log record.
+     * @param array<string,mixed> $context Additional log data.
+     */
     public function error(string | Stringable $message, array $context = []): void;
 
     /**
-      * Exceptional occurrences that are not errors.
-      *
-      * Example: Use of deprecated APIs, poor use of an API, undesirable things
-      * that are not necessarily wrong.
-      *
-      * @param mixed[] $context
-      */
+     * Exceptional occurrences that are not errors.
+     *
+     * Example: Use of deprecated APIs, poor use of an API, undesirable things
+     * that are not necessarily wrong.
+     *
+     * @param string|Stringable   $message Message to save in the log record.
+     * @param array<string,mixed> $context Additional log data.
+     */
     public function warning(string | Stringable $message, array $context = []): void;
 
     /**
-      * Normal but significant events.
-      *
-      * @param mixed[] $context
-      */
+     * Normal but significant events.
+     *
+     * @param string|Stringable   $message Message to save in the log record.
+     * @param array<string,mixed> $context Additional log data.
+     */
     public function notice(string | Stringable $message, array $context = []): void;
 
     /**
-      * Interesting events.
-      *
-      * Example: User logs in, SQL logs.
-      *
-      * @param mixed[] $context
-      */
+     * Interesting events.
+     *
+     * Example: User logs in, SQL logs.
+     *
+     * @param string|Stringable   $message Message to save in the log record.
+     * @param array<string,mixed> $context Additional log data.
+     */
     public function info(string | Stringable $message, array $context = []): void;
 
     /**
-      * Detailed debug information.
-      *
-      * @param mixed[] $context
-      */
+     * Detailed debug information.
+     *
+     * @param string|Stringable   $message Message to save in the log record.
+     * @param array<string,mixed> $context Additional log data.
+     */
     public function debug(string | Stringable $message, array $context = []): void;
 
     /**
-      * Logs with an arbitrary level.
-      *
-      * @param mixed   $level
-      * @param mixed[] $context
-      *
-      * @throws InvalidArgumentException
-      */
-    public function log($level, string | Stringable $message, array $context = []): void;
+     * Logs with an arbitrary level.
+     *
+     * @param LogLevel            $level   Log level.
+     * @param string|Stringable   $message Message to save in the log record.
+     * @param array<string,mixed> $context Additional log data.
+     */
+    public function log(LogLevel $level, string | Stringable $message, array $context = []): void;
 }
