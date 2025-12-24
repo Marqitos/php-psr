@@ -19,6 +19,8 @@ declare(strict_types=1);
 
 namespace Rodas\Psr\Http\Message;
 
+use const UPLOAD_ERR_OK;
+
 require_once __DIR__ . '/StreamInterface.php';
 require_once __DIR__ . '/UploadedFileInterface.php';
 
@@ -46,7 +48,7 @@ interface UploadedFileFactoryInterface {
     public function createUploadedFile(
         StreamInterface $stream,
         ?int $size = null,
-        int $error = \UPLOAD_ERR_OK,
+        int $error = UPLOAD_ERR_OK,
         ?string $clientFilename = null,
         ?string $clientMediaType = null
     ): UploadedFileInterface;

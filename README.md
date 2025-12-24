@@ -11,12 +11,14 @@ The packages included are:
 - fig/http-message-util (The Fig namespace has been renamed to Psr)
 
 ```text
-src/             (Psr\ namespace)
-├── Clock/       (psr/clock)
-└── Http/
-    ├── Client/  (psr/http-client)
-    ├── Message/ (psr/http-message, psr/http-factory & fig/http-message-util)
-    └── Log/     (psr/log)
+src/             
+├── Psr              (Psr\ namespace)
+│   └── Clock/       (psr/clock)
+└── Rodas/Psr        (Rodas\Psr\ namespace)
+    ├── Http/
+    │   ├── Client/  (rodas/psr-http-client)
+    │   └── Message/ (rodas/psr-http-message)
+    └── Log/         (rodas/psr-log)
 ```
 
 ---
@@ -51,10 +53,6 @@ These recommendations cover a wide variety of practices and conventions, from co
 HTTP messages are the foundation of web development. Web browsers and HTTP clients such as cURL create HTTP request messages that are sent to a web server, which provides an HTTP response message. Server-side code receives an HTTP request message, and returns an HTTP response message.
 
 HTTP messages are typically abstracted from the end-user consumer, but as developers, we typically need to know how they are structured and how to access or manipulate them in order to perform our tasks, whether that might be making a request to an HTTP API, or handling an incoming request.
-
-- [Interfaces](/Marqitos/php-psr/blob/main/docs/PSR7-Interfaces.md)
-- [Usage](/Marqitos/php-psr/blob/main/docs/PSR7-Usage.md)
-- [ChangeLog](/Marqitos/php-psr/blob/main/psr_http-message_CHANGELOG.md)
 
 ### Messages
 
@@ -212,7 +210,7 @@ $timestamp = $clock->now()->getTimestamp();
 
 ---
 
-📦 Available at Packagist: [rodas/psr-scaffold](https://packagist.org/packages/rodas/psr-scaffold)
+📦 Available at Packagist: [rodas/psr-scaffold](https://packagist.org/packages/rodas/psr-scaffold) > v2.0
 
 ```bash
 composer require rodas/psr-scaffold

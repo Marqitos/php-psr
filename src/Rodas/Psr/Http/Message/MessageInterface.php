@@ -50,12 +50,12 @@ interface MessageInterface {
      * each value is an array of strings associated with the header.
      *
      *     // Represent the headers as a string
-     *     foreach ($message->headers() as $name => $values) {
+     *     foreach ($message->$headers as $name => $values) {
      *         echo $name . ": " . implode(", ", $values);
      *     }
      *
      *     // Emit headers iteratively:
-     *     foreach ($message->headers() as $name => $values) {
+     *     foreach ($message->$headers as $name => $values) {
      *         foreach ($values as $value) {
      *             header(sprintf('%s: %s', $name, $value), false);
      *         }
@@ -64,7 +64,7 @@ interface MessageInterface {
      * While header names are not case-sensitive, $headers will preserve the
      * exact case in which headers were originally specified.
      *
-     * @var string[][] Returns an associative array of the message's headers. Each
+     * @var string[][] Gets an associative array of the message's headers. Each
      *     key MUST be a header name, and each value MUST be an array of strings
      *     for that header.
      */
@@ -73,7 +73,7 @@ interface MessageInterface {
     /**
      * Gets the body of the message.
      *
-     * @var StreamInterface Returns the body as a stream.
+     * @var StreamInterface Gets the body as a stream.
      */
     public StreamInterface $body { get; }
 

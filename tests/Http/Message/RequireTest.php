@@ -25,8 +25,10 @@ class RequireTest extends TestCase {
 
     public const MESSAGE_INTERFACE          = 'Rodas\Psr\Http\Message\MessageInterface';
     public const REQUEST_INTERFACE          = 'Rodas\Psr\Http\Message\RequestInterface';
+    public const REQUEST_METHOD             = 'Rodas\Psr\Http\Message\RequestMethod';
     public const RESPONSE_INTERFACE         = 'Rodas\Psr\Http\Message\ResponseInterface';
     public const SERVER_REQUEST_INTERFACE   = 'Rodas\Psr\Http\Message\ServerRequestInterface';
+    public const STATUS_CODE                = 'Rodas\Psr\Http\Message\StatusCode';
     public const STREAM_INTERFACE           = 'Rodas\Psr\Http\Message\StreamInterface';
     public const UPLOADED_FILE_INTERFACE    = 'Rodas\Psr\Http\Message\UploadedFileInterface';
     public const URI_INTERFACE              = 'Rodas\Psr\Http\Message\UriInterface';

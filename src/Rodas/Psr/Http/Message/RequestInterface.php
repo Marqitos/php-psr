@@ -116,11 +116,11 @@ interface RequestInterface extends MessageInterface {
      * immutability of the message, and MUST return an instance that has the
      * changed request method.
      *
-     * @param string $method Case-sensitive method.
+     * @param RequestMethod|string $method Request method.
      * @return static
      * @throws \InvalidArgumentException for invalid HTTP methods.
      */
-    public function withMethod(string $method): RequestInterface;
+    public function withMethod(RequestMethod|string $method): RequestInterface;
 
     /**
      * Returns an instance with the provided URI.

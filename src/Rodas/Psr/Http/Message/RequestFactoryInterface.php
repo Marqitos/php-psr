@@ -20,17 +20,18 @@ declare(strict_types=1);
 namespace Rodas\Psr\Http\Message;
 
 require_once __DIR__ . '/RequestInterface.php';
+require_once __DIR__ . '/RequestMethod.php';
 
 interface RequestFactoryInterface {
     /**
      * Create a new request.
      *
-     * @param string $method The HTTP method associated with the request.
+     * @param RequestMethod|string $method The HTTP method associated with the request.
      * @param UriInterface|string $uri The URI associated with the request. If
      *     the value is a string, the factory MUST create a UriInterface
      *     instance based on it.
      *
      * @return RequestInterface
      */
-    public function createRequest(string $method, UriInterface|string $uri): RequestInterface;
+    public function createRequest(RequestMethod|string $method, UriInterface|string $uri): RequestInterface;
 }

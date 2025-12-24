@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Rodas\Psr\Http\Message;
 
+require_once __DIR__ . '/RequestMethod.php';
 require_once __DIR__ . '/ServerRequestInterface.php';
 
 interface ServerRequestFactoryInterface {
@@ -29,7 +30,7 @@ interface ServerRequestFactoryInterface {
      * of the given values is performed, and, in particular, no attempt is made to
      * determine the HTTP method or URI, which must be provided explicitly.
      *
-     * @param string $method The HTTP method associated with the request.
+     * @param RequestMethod|string $method The HTTP method associated with the request.
      * @param UriInterface|string $uri The URI associated with the request. If
      *     the value is a string, the factory MUST create a UriInterface
      *     instance based on it.
@@ -38,5 +39,5 @@ interface ServerRequestFactoryInterface {
      *
      * @return ServerRequestInterface
      */
-    public function createServerRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface;
+    public function createServerRequest(RequestMethod|string $method, $uri, array $serverParams = []): ServerRequestInterface;
 }

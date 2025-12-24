@@ -40,17 +40,23 @@ class FactoryRequireTest extends TestCase {
      */
     public function testRequestFactoryInterface(): void {
         // Not necessary loaded
-        // MessageInterface depends StreamInterface
+        // RequestFactoryInterface depends StreamInterface
         $existsStreamInterface = interface_exists(RequireTest::REQUEST_INTERFACE, false);
-        $allLoad = $existsStreamInterface;
+        // RequestFactoryInterface depends RequestMethod
+        $existsRequestMethod = enum_exists(RequireTest::REQUEST_METHOD, false);
+        $allLoad = $existsStreamInterface &&
+            $existsRequestMethod;
         // All must be loaded
-        $existsMessageInterface = interface_exists(self::REQUEST_FACTORY_INTERFACE);
+        $existsRequestFactoryInterface = interface_exists(self::REQUEST_FACTORY_INTERFACE);
         if (!$allLoad) {
-            // MessageInterface depends StreamInterface
+            // RequestFactoryInterface depends StreamInterface
             $existsStreamInterface = interface_exists(RequireTest::REQUEST_INTERFACE, false);
+            // RequestFactoryInterface depends RequestMethod
+            $existsRequestMethod = enum_exists(RequireTest::REQUEST_METHOD, false);
         }
-        $allLoad = $existsMessageInterface &&
-            $existsStreamInterface;
+        $allLoad = $existsRequestFactoryInterface &&
+            $existsStreamInterface &&
+            $existsRequestMethod;
         $this->assertTrue($allLoad);
     }
 
@@ -65,15 +71,21 @@ class FactoryRequireTest extends TestCase {
         // Not necessary loaded
         // ResponseFactoryInterface depends ResponseInterface
         $existsResponseInterface = interface_exists(RequireTest::RESPONSE_INTERFACE, false);
-        $allLoad = $existsResponseInterface;
+        // ResponseFactoryInterface depends StatusCode
+        $existsStatusCode = enum_exists(RequireTest::STATUS_CODE, false);
+        $allLoad = $existsResponseInterface &&
+            $existsStatusCode;
         // All must be loaded
         $existsResponseFactoryInterface = interface_exists(self::RESPONSE_FACTORY_INTERFACE);
         if (!$allLoad) {
             // ResponseFactoryInterface depends ResponseInterface
             $existsResponseInterface = interface_exists(RequireTest::RESPONSE_INTERFACE, false);
+            // ResponseFactoryInterface depends StatusCode
+            $existsStatusCode = enum_exists(RequireTest::STATUS_CODE, false);
         }
         $allLoad = $existsResponseFactoryInterface &&
-            $existsResponseInterface;
+            $existsResponseInterface &&
+            $existsStatusCode;
         $this->assertTrue($allLoad);
     }
 
@@ -88,15 +100,21 @@ class FactoryRequireTest extends TestCase {
         // Not necessary loaded
         // ServerRequestFactoryInterface depends ServerRequestInterface
         $existsServerRequestInterface = interface_exists(RequireTest::SERVER_REQUEST_INTERFACE, false);
-        $allLoad = $existsServerRequestInterface;
+        // ServerRequestFactoryInterface depends RequestMethod
+        $existsRequestMethod = enum_exists(RequireTest::REQUEST_METHOD, false);
+        $allLoad = $existsServerRequestInterface &&
+            $existsRequestMethod;
         // All must be loaded
         $existsServerRequestFactoryInterface = interface_exists(self::SERVER_REQUEST_FACTORY_INTERFACE);
         if (!$allLoad) {
             // ServerRequestFactoryInterface depends ServerRequestInterface
             $existsServerRequestInterface = interface_exists(RequireTest::SERVER_REQUEST_INTERFACE, false);
+            // ServerRequestFactoryInterface depends RequestMethod
+            $existsRequestMethod = enum_exists(RequireTest::REQUEST_METHOD, false);
         }
         $allLoad = $existsServerRequestFactoryInterface &&
-            $existsServerRequestInterface;
+            $existsServerRequestInterface &&
+            $existsRequestMethod;
         $this->assertTrue($allLoad);
     }
 
