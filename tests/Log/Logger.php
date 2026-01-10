@@ -18,6 +18,9 @@ use Rodas\Psr\Log\AbstractLogger;
 use Rodas\Psr\Log\LogLevel;
 use Stringable;
 
+/**
+ * A logger that save the last log into public variables
+ */
 class Logger extends AbstractLogger {
 
     public LogLevel $level;
@@ -48,7 +51,10 @@ class Logger extends AbstractLogger {
         $replace = [];
         foreach ($context as $key => $val) {
             // check that the value can be cast to string
-            if (!is_array($val) && (!is_object($val) || method_exists($val, '__toString'))) {
+            if (! is_array($val)
+                && (! is_object($val)
+                    || method_exists($val, '__toString'))) {
+
                 $replace['{' . $key . '}'] = $val;
             }
         }
