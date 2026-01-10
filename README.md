@@ -1,14 +1,14 @@
 # PHP Standards Recommendations
 
 This package compiles several [PHP Standards Recommendations](https://www.php-fig.org/psr) packages, so they can be loaded using Fallback Autoload or even require_once.
+But some modified, and with a different namespace, adapted to the new features of PHP 8.4 (Enums, properties).
 The packages included are:
 
 - psr/clock
-- psr/http-client
-- psr/http-factory
-- psr/http-message
-- psr/log
-- fig/http-message-util (The Fig namespace has been renamed to Psr)
+- rodas/psr-scaffold
+  - rodas/psr-http-client (Virtual package, based on psr/http-client)
+  - rodas/psr-http-message (Virtual package, based on psr/http-factory, psr/http-message and fig/http-message-util)
+  - rodas/psr-log (Virtual package, based on psr/log)
 
 ```text
 src/             
