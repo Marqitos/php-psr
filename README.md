@@ -1,8 +1,14 @@
 # PHP Standards Recommendations
 
 This package compiles several [PHP Standards Recommendations](https://www.php-fig.org/psr) packages, so they can be loaded using Fallback Autoload or even require_once.
-But some modified, and with a different namespace, adapted to the new features of PHP 8.4 (Enums, properties).
-The packages included are:
+
+But starting with version 2.0.0, this library has some modifications compared to the original, and with a different namespace, adapted to the new features of PHP 8.4:
+
+- Properties `->value` instead of `->getValue()`.
+- BackedEnums instead of lists of constants.
+- Strict types when possible
+
+This package includes the following PSR libraries and modifications:
 
 - psr/clock
 - rodas/psr-scaffold
@@ -26,6 +32,14 @@ src/
 The PSRs (PHP Standards Recommendations) are standards recommendations for PHP. They are proposals developed by PHP-FIG, the PHP Framework Interoperability Group, with the goal of improving interoperability between different PHP frameworks and libraries.
 
 Classes, Interfaces and Traits, work of [PHP Standards Recommendations](https://www.php-fig.org/psr), part of [The PHP framework interop group](https://www.php-fig.org)
+
+## Installation
+
+📦 Available at Packagist: [rodas/psr-scaffold](https://packagist.org/packages/rodas/psr-scaffold) > v2.0
+
+```bash
+composer require rodas/psr-scaffold
+```
 
 ## PSR Implementations [^1]
 
@@ -208,16 +222,10 @@ $timestamp = $clock->now()->getTimestamp();
 - [RFC 8297: section 2](https://tools.ietf.org/html/rfc8297#section-2) - An HTTP Status Code for Indicating Hints: HTTP Status Code 103: Early Hints
 - [RFC 8470: section 7](https://tools.ietf.org/html/rfc8470#section-7) - Using Early Data in HTTP: IANA Considerations
 
----
-
-📦 Available at Packagist: [rodas/psr-scaffold](https://packagist.org/packages/rodas/psr-scaffold) > v2.0
-
-```bash
-composer require rodas/psr-scaffold
-```
-
----
+### Automatic IA Documentation
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Marqitos/php-psr)
 
-[^1]:**[Implementation versions](/Marqitos/php-psr/blob/main/VERSIONS.md)**
+---
+
+[^1]:**[PSR Implementation versions](/Marqitos/php-psr/blob/main/VERSIONS.md)**
