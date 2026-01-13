@@ -125,7 +125,7 @@ enum StatusCode: int {
      *
      * @psalm-var array<positive-int, non-empty-string>
      */
-    CONST PHRASES = [
+    const PHRASES = [
         // INFORMATIONAL CODES
         100 => 'Continue',
         101 => 'Switching Protocols',
@@ -255,10 +255,10 @@ enum StatusCode: int {
      * @param  StatusCode|integer $code
      * @return string|null
      */
-    public static function getPhrase(StatusCode|int $code): string {
+    public static function getPhrase(StatusCode|int $code): ?string {
         if ($code instanceof StatusCode) {
             $code = $code->value;
         }
-        return self::PHRASES[$code];
+        return self::PHRASES[$code] ?? null;
     }
 }
