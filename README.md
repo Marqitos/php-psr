@@ -21,9 +21,44 @@ src/             (Psr\ namespace)
 
 ---
 
+But starting with version 2.0.0, this library has some modifications compared to the original, and with a different namespace, adapted to the new features of PHP 8.4:
+
+- Properties `->value` instead of `->getValue()`.
+- BackedEnums instead of lists of constants.
+- Strict types when posible
+
+This package includes the following PSR libraries and modifications:
+
+- psr/clock
+- rodas/psr-scaffold
+  - rodas/psr-http-client (Virtual package, based on psr/http-client)
+  - rodas/psr-http-message (Virtual package, based on psr/http-factory, psr/http-message and fig/http-message-util)
+  - rodas/psr-log (Virtual package, based on psr/log)
+
+```text
+src/             
+├── Psr              (Psr\ namespace)
+│   └── Clock/       (psr/clock)
+└── Rodas/Psr        (Rodas\Psr\ namespace)
+    ├── Http/
+    │   ├── Client/  (rodas/psr-http-client)
+    │   └── Message/ (rodas/psr-http-message)
+    └── Log/         (rodas/psr-log)
+```
+
+---
+
 The PSRs (PHP Standards Recommendations) are standards recommendations for PHP. They are proposals developed by PHP-FIG, the PHP Framework Interoperability Group, with the goal of improving interoperability between different PHP frameworks and libraries.
 
 Classes, Interfaces and Traits, work of [PHP Standards Recommendations](https://www.php-fig.org/psr), part of [The PHP framework interop group](https://www.php-fig.org)
+
+## Installation
+
+📦 Available at Packagist: [rodas/psr-scaffold](https://packagist.org/packages/rodas/psr-scaffold) > v2.0
+
+```bash
+composer require rodas/psr-scaffold
+```
 
 ## PSR Implementations [^1]
 
@@ -210,16 +245,10 @@ $timestamp = $clock->now()->getTimestamp();
 - [RFC 8297: section 2](https://tools.ietf.org/html/rfc8297#section-2) - An HTTP Status Code for Indicating Hints: HTTP Status Code 103: Early Hints
 - [RFC 8470: section 7](https://tools.ietf.org/html/rfc8470#section-7) - Using Early Data in HTTP: IANA Considerations
 
----
-
-📦 Available at Packagist: [rodas/psr-scaffold](https://packagist.org/packages/rodas/psr-scaffold)
-
-```bash
-composer require rodas/psr-scaffold
-```
-
----
+### Automatic IA Documentation
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Marqitos/php-psr)
+
+---
 
 [^1]:**[Implementation versions](/Marqitos/php-psr/blob/main/VERSIONS.md)**
